@@ -7,6 +7,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { UserProfilComponent } from './components/user-profil/user-profil.component';
 import { EmailVerifNotifComponent } from './components/email-verif-notif/email-verif-notif.component';
+import { KycTriggerPageComponent } from './components/kyc-trigger-page/kyc-trigger-page.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,9 +19,10 @@ export const routes: Routes = [
     ],
   },
 
-  {  path: 'login',component: LoginPageComponent },
+  { path: 'login',component: LoginPageComponent },
   { path: 'register',component: RegisterPageComponent },
   { path: 'user-dashboard',component: UserDashboardComponent },
   { path: 'user-profil',component: UserProfilComponent },
-  { path: 'email-verif-notif',component: EmailVerifNotifComponent }
+  { path: 'email-verif-notif',component: EmailVerifNotifComponent },
+  { path: 'kyc-trigger-page',component: KycTriggerPageComponent }
 ];
