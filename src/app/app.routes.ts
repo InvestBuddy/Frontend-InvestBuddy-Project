@@ -6,6 +6,7 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { UserProfilComponent } from './components/user-profil/user-profil.component';
+import { EmailVerifNotifComponent } from './components/email-verif-notif/email-verif-notif.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,5 +21,6 @@ export const routes: Routes = [
   {  path: 'login',component: LoginPageComponent },
   { path: 'register',component: RegisterPageComponent },
   { path: 'user-dashboard',component: UserDashboardComponent },
-  { path: 'user-profil',component: UserProfilComponent }
+  { path: 'user-profil',component: UserProfilComponent },
+  { path: 'email-verif-notif',component: EmailVerifNotifComponent }
 ];
