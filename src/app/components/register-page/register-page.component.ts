@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, AfterViewInit } from '@angular/core';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-register-page',
-  imports: [],
+  standalone: true,
+  imports: [RouterOutlet, RouterModule, CommonModule],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css'
 })

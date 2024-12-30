@@ -1,0 +1,87 @@
+<!-- User Dashboard -->
+<div class="container-xxl py-5">
+  <!-- Page Header -->
+  <div class="container mb-4">
+    <div class="d-flex align-items-center justify-content-between">
+      <h1 class="text-primary">User Dashboard</h1>
+      <button class="btn btn-primary">
+        <i class="fas fa-user-circle me-2"></i> Profile
+      </button>
+    </div>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div class="container">
+    <div class="row g-4">
+      <!-- Summary Cards -->
+      <div class="col-lg-3">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Portfolio Balance</h5>
+            <p class="card-text display-6 text-primary">$10,230</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Monthly Contributions</h5>
+            <p class="card-text display-6 text-primary">$500</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Performance</h5>
+            <p class="card-text display-6 text-primary">+15%</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card text-center shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Investments</h5>
+            <p class="card-text display-6 text-primary">12</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="row mt-5">
+      <div class="col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Portfolio Allocation</h5>
+            <canvas id="portfolioChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Performance Trends</h5>
+            <canvas id="performanceChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Recent Activity</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Deposited $500 on <strong>28 Dec 2024</strong></li>
+              <li class="list-group-item">Bought 10 shares of Tesla on <strong>25 Dec 2024</strong></li>
+              <li class="list-group-item">Received $100 dividend on <strong>20 Dec 2024</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
