@@ -45,33 +45,93 @@ export class UserDashboardComponent implements AfterViewInit {
   }
 
   // Method to initialize the performance trends chart
-  private initializePerformanceChart(): void {
-    const performanceCtx = document.getElementById('performanceChart') as HTMLCanvasElement;
-    if (performanceCtx) {
-      new Chart(performanceCtx, {
-        type: 'line',
-        data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-          datasets: [
-            {
-              label: 'Portfolio Growth',
-              data: [1000, 1500, 2000, 2500, 3000, 4000],
-              borderColor: '#007bff',
-              fill: false,
-              tension: 0.4,
+  // Method to initialize the enhanced performance trends chart
+private initializePerformanceChart(): void {
+  const performanceTrendsCtx = document.getElementById('performanceTrendsChart') as HTMLCanvasElement;
+  if (performanceTrendsCtx) {
+    new Chart(performanceTrendsCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        datasets: [
+          {
+            label: 'Portfolio Value',
+            data: [1000, 1500, 2000, 2700, 3400, 4200, 5000],
+            borderColor: '#007bff',
+            backgroundColor: 'rgba(0, 123, 255, 0.2)',
+            pointBackgroundColor: '#007bff',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#007bff',
+            tension: 0.4, // Smooth curves
+            borderWidth: 3,
+          },
+          {
+            label: 'Market Index',
+            data: [950, 1450, 1950, 2500, 3200, 4000, 4700],
+            borderColor: '#28a745',
+            backgroundColor: 'rgba(40, 167, 69, 0.2)',
+            pointBackgroundColor: '#28a745',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: '#28a745',
+            tension: 0.4, // Smooth curves
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              font: {
+                size: 14,
+              },
             },
-          ],
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              display: true,
-              position: 'top',
+          },
+          tooltip: {
+            callbacks: {
+              label: (tooltipItem: any) =>
+                `${tooltipItem.dataset.label}: $${tooltipItem.raw.toLocaleString()}`,
             },
           },
         },
-      });
-    }
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: 'Months',
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+              color: '#555',
+            },
+            grid: {
+              display: false,
+            },
+          },
+          y: {
+            title: {
+              display: true,
+              text: 'Portfolio Value ($)',
+              font: {
+                size: 14,
+                weight: 'bold',
+              },
+              color: '#555',
+            },
+            ticks: {
+              callback: (value: any) => `$${value.toLocaleString()}`,
+            },
+          },
+        },
+      },
+    });
   }
+}
+
 }

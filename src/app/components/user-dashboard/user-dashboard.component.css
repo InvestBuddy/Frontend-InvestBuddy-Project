@@ -13,10 +13,7 @@
   font-weight: bold;
 }
 
-.container-xxl {
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-  min-height: 100vh;
-}
+
 
 h1 {
   font-size: 2.5rem;
@@ -36,4 +33,22 @@ h1 {
 canvas {
   max-width: 100%;
   height: auto;
+}
+
+
+
+/* Increase the size of the light gray container */
+.container-xxl {
+  background-color: #f8f9fa;
+  padding: 50px 20px; /* Increased padding for more free space */
+}
+
+/* Chart Heights */
+#portfolioChart {
+  height: 400px; /* Increased height for better readability */
+}
+
+/* Ensure equal widths for charts */
+.card-body canvas {
+  width: 100% !important; /* Ensure charts fill the container width */
 }
