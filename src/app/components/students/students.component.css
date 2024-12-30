@@ -1,0 +1,160 @@
+/* Container Styling */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+    animation: epicFadeIn 0.7s ease-in-out;
+    color: #ffffff;
+  }
+  
+  /* Epic Fade-In Animation */
+  @keyframes epicFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Heading Styling */
+  .container h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    text-shadow: 0 5px 20px rgba(255, 255, 255, 0.5);
+  }
+  
+  /* Add Student Button */
+  .btn-success {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #10b981, #34d399, #4ade80);
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+  }
+  
+  .btn-success:hover {
+    background: linear-gradient(135deg, #4ade80, #34d399, #10b981);
+    transform: scale(1.1) rotate(1deg);
+    box-shadow: 0 10px 40px rgba(16, 185, 129, 0.6);
+  }
+  
+  .btn-success:active {
+    transform: scale(0.98);
+  }
+  
+  /* Table Styling */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Table Head */
+  .table thead {
+    background: linear-gradient(135deg, #6c63ff, #42a5f5, #3b82f6);
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+  
+  .table thead th {
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    text-align: left;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Table Body */
+  .table tbody tr {
+    transition: all 0.3s ease;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .table tbody td {
+    padding: 1rem;
+    font-size: 1.1rem;
+    color: #36454F;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Action Buttons */
+  .btn-danger {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ef4444, #f87171, #f43f5e);
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4);
+  }
+  
+  .btn-danger:hover {
+    background: linear-gradient(135deg, #f43f5e, #ef4444, #f87171);
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(244, 63, 94, 0.6);
+  }
+  
+  .btn-warning {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24, #fcd34d);
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 20px rgba(251, 191, 36, 0.4);
+  }
+  
+  .btn-warning:hover {
+    background: linear-gradient(135deg, #fcd34d, #fbbf24, #f59e0b);
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(251, 191, 36, 0.6);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1.5rem;
+    }
+  
+    .table thead th, .table tbody td {
+      font-size: 0.9rem;
+      padding: 0.8rem;
+    }
+  
+    .btn-success, .btn-danger, .btn-warning {
+      padding: 0.7rem 1.2rem;
+      font-size: 0.9rem;
+    }
+  }
+  

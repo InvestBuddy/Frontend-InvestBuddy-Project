@@ -1,0 +1,55 @@
+/* src/assets/css/style.css */
+.navbar-brand img.owl-logo {
+  height: 90px; /* Hauteur ajustée pour être plus petite */
+  width: 100px;  /* Maintenir les proportions */
+  margin-left: 10px; /* Espace entre le titre et le logo */
+  vertical-align: middle; /* Alignement vertical */
+}
+/* src/assets/css/style.css */
+.navbar-brand img.owl-logo2 {
+  height: 30px; /* Hauteur ajustée pour être plus petite */
+  width: 50px;  /* Maintenir les proportions */
+  margin-left: 10px; /* Espace entre le titre et le logo */
+  vertical-align: middle; /* Alignement vertical */
+}
+
+
+
+
+.testimonial-item {
+  background-color: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-text {
+  position: relative;
+  font-size: 16px;
+  color: #555555;
+}
+
+.testimonial-text i {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+}
+
+.owl-carousel .owl-dots .owl-dot span {
+  width: 12px;
+  height: 12px;
+  margin: 5px 7px;
+  display: inline-block;
+  background: #ddd;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.owl-carousel .owl-dots .owl-dot.active span {
+  background: #007bff;
+}
+
+.owl-carousel .owl-dots {
+  text-align: center;
+  margin-top: 20px;
+}
