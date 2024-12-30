@@ -55,7 +55,7 @@ export class RegisterPageComponent {
         fixedTop?.classList.toggle('bg-white', scrollTop > 45);
         fixedTop?.classList.toggle('shadow', scrollTop > 45);
         if (fixedTop) {
-          fixedTop.style.top = scrollTop > 6 ? '-6px' : '0';
+          fixedTop.style.top = scrollTop > 45 ? '-45px' : '0';
         }
       }
     });
