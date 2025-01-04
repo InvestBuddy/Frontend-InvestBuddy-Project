@@ -1,0 +1,170 @@
+/* Fullscreen Container with Gradient Background */
+.success-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden; /* Hide overflowing emojis */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #1d976c, #93f9b9); /* Vibrant green gradient */
+  font-family: 'Poppins', sans-serif; /* Modern and clean font */
+}
+
+/* Floating Emoji Animations */
+.floating-emoji {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.floating-emoji:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-emoji:nth-child(2) {
+  top: 30%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.floating-emoji:nth-child(3) {
+  bottom: 25%;
+  left: 25%;
+  animation-delay: 4s;
+}
+
+.floating-emoji:nth-child(4) {
+  bottom: 10%;
+  right: 20%;
+  animation-delay: 6s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(15deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* Success Box */
+.success-box {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 500px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Title with Glow */
+.success-title {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #28a745; /* Vibrant green */
+  margin-bottom: 20px;
+  text-shadow: 0 0 10px rgba(40, 167, 69, 0.8), 0 0 20px rgba(40, 167, 69, 0.5); /* Glow effect */
+}
+
+/* Success Message */
+.success-message {
+  font-size: 1.4rem;
+  color: #444444; /* Neutral grey */
+  margin-bottom: 20px;
+}
+
+/* Button Styling */
+.btn-success {
+  background: linear-gradient(to right, #28a745, #1e7e34);
+  color: #ffffff;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+  background: linear-gradient(to right, #1e7e34, #155724);
+  box-shadow: 0 4px 15px rgba(33, 136, 56, 0.5);
+  transform: scale(1.08); /* Subtle hover effect */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Container Styling */
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom right, #1d976c, #93f9b9); /* Green gradient */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Loading Box */
+.loading {
+  text-align: center;
+  color: #444;
+  font-size: 1.5rem;
+}
+
+/* Success Box */
+.success-box {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+}
+
+.success-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #28a745; /* Green success */
+}
+
+.success-message {
+  font-size: 1.2rem;
+  color: #555555;
+}
+
+/* Error Box */
+.error-box {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+}
+
+.error-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #dc3545; /* Red error */
+}
+
+.error-message {
+  font-size: 1.2rem;
+  color: #555555;
+}

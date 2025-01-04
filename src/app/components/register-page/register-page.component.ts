@@ -1,20 +1,91 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule],
+  imports: [RouterOutlet, RouterModule, CommonModule, ReactiveFormsModule],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css'
 })
 export class RegisterPageComponent {
-  constructor(private titleService: Title) {
+
+  registerForm: FormGroup;
+  // formFields = [
+  //   { id: 'firstName', controlName: 'firstName', label: 'First Name', icon: 'fas fa-user me-2', type: 'text', placeholder: 'First Name' },
+  //   { id: 'lastName', controlName: 'lastName', label: 'Last Name', icon: 'fas fa-user-tag me-2', type: 'text', placeholder: 'Last Name' },
+  //   { id: 'email', controlName: 'email', label: 'Email', icon: 'fas fa-envelope me-2', type: 'email', placeholder: 'name@example.com' },
+  //   { id: 'phone', controlName: 'phone', label: 'Phone Number', icon: 'fas fa-phone me-2', type: 'tel', placeholder: 'Phone Number' },
+  //   { id: 'birthDate', controlName: 'birthDate', label: 'Date of Birth', icon: 'fas fa-calendar-alt me-2', type: 'date', placeholder: 'Date of Birth' },
+  //   { id: 'address', controlName: 'address', label: 'Address', icon: 'fas fa-map-marker-alt me-2', type: 'text', placeholder: 'Address' },
+  //   { id: 'password', controlName: 'password', label: 'Password', icon: 'fas fa-lock me-2', type: 'password', placeholder: 'Password' },
+  //   { id: 'confirmPassword', controlName: 'confirmPassword', label: 'Confirm Password', icon: 'fas fa-lock me-2', type: 'password', placeholder: 'Confirm Password' },
+  // ];
+
+
+  constructor(private fb: FormBuilder, private authService: AuthService,private titleService: Title, private router: Router) {
     // Définir le titre ici
     this.titleService.setTitle('IB - Register Page');
+    this.registerForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern('^\\+\\d{1,15}$'), // Match backend's regex for phone number
+        ],
+      ],
+      password: ['', Validators.required],
+      address: ['', Validators.required],
+      birthDate: ['', Validators.required], // Ensure date picker provides `YYYY-MM-DD`
+    });
+
   }
+
+
+
+  isInvalid(controlName: string): any {
+    const control = this.registerForm.get(controlName);
+    return control?.invalid && control?.touched;
+  }
+
+  getErrorMessage(controlName: string): string {
+    const control = this.registerForm.get(controlName);
+    if (control?.hasError('required')) return 'This field is required.';
+    if (control?.hasError('email')) return 'Invalid email address.';
+    if (control?.hasError('minlength')) return 'Password must be at least 6 characters.';
+    if (control?.hasError('pattern')) return 'Invalid phone number.';
+    return '';
+  }
+
+
+  onSubmit() {
+    if (this.registerForm.valid) {
+      const payload = this.registerForm.value;
+  
+      this.authService.registerUser(payload).subscribe(
+        (response) => {
+          // Redirection vers la page d'instruction
+          this.router.navigate(['/verify-email-instruction']);
+        },
+        (error) => {
+          console.error('Error during registration:', error);
+          alert('Registration failed: ' + (error.error || 'Unknown error'));
+        }
+      );
+    } else {
+      alert('Please fill in all required fields correctly.');
+    }
+  }
+  
+
 
   ngAfterViewInit(): void {
     // Initialize features after DOM is rendered
@@ -138,4 +209,7 @@ export class RegisterPageComponent {
       });
     }
   }
+
+
+
 }

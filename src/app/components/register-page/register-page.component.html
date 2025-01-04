@@ -20,118 +20,148 @@
         <a href="#services" class="nav-item nav-link">Services</a>
         <a href="#contact" class="nav-item nav-link">Contact</a>
       </div>
-      <!-- <div class="d-none d-lg-flex align-items-center"> -->
-        <!-- Register Button -->
-        <a href="/login" class="btn btn-primary btn-sm rounded-pill mx-2 d-flex align-items-center">
-          <i class="fas fa-user-plus me-2"></i> Login
-        </a>
-        <!-- Social Media Icons -->
-        <a class="btn btn-light btn-sm-square rounded-circle ms-3" href="">
-          <small class="fab fa-facebook-f text-primary"></small>
-        </a>
-        <a class="btn btn-light btn-sm-square rounded-circle ms-3" href="">
-          <small class="fab fa-twitter text-primary"></small>
-        </a>
-        <a class="btn btn-light btn-sm-square rounded-circle ms-3" href="">
-          <small class="fab fa-linkedin-in text-primary"></small>
-        </a>
-      </div>
-      <a href="#" class="navbar-brand ms-4 ms-lg-0">
-        <img class="owl-logo2 d-inline-block" src="assets/img/maroc.png" alt="Logo">
+      <a href="/login" class="btn btn-primary btn-sm rounded-pill mx-2 d-flex align-items-center">
+        <i class="fas fa-user-plus me-2"></i> Login
       </a>
-    <!-- </div> -->
+    </div>
   </nav>
 </div>
 <!-- Navbar End -->
-
 
 <!-- Register Start -->
 <div class="container-xxl py-5 bg-light vh-100 d-flex align-items-center">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-8"> <!-- Increased width for larger form -->
+      <div class="col-lg-8">
         <div class="bg-white border rounded p-5 shadow wow fadeInUp" data-wow-delay="0.3s">
           <div class="text-center mb-4">
             <h1 class="text-primary" style="font-size: 2.5rem;">Register</h1>
             <p class="text-muted" style="font-size: 1.2rem;">Create your InvestBuddy account</p>
           </div>
-          <form>
-            <div class="row g-4"> <!-- Increased gap between inputs -->
-              <!-- First Name -->
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="row g-4">
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="text" class="form-control form-control-lg" id="firstName" placeholder="First Name" required>
-                  <label for="firstName"><i class="fas fa-user me-2"></i>First Name</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    class="form-control"
+                    placeholder="First Name"
+                    formControlName="firstName"
+                  />
+                  <label for="firstName">First Name</label>
+                  <div *ngIf="isInvalid('firstName')" class="text-danger">
+                    First name is required.
+                  </div>
                 </div>
               </div>
 
-              <!-- Last Name -->
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="text" class="form-control form-control-lg" id="lastName" placeholder="Last Name" required>
-                  <label for="lastName"><i class="fas fa-user-tag me-2"></i>Last Name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    class="form-control"
+                    placeholder="Last Name"
+                    formControlName="lastName"
+                  />
+                  <label for="lastName">Last Name</label>
+                  <div *ngIf="isInvalid('lastName')" class="text-danger">
+                    Last name is required.
+                  </div>
                 </div>
               </div>
 
-              <!-- Email -->
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="email" class="form-control form-control-lg" id="email" placeholder="name@example.com" required>
-                  <label for="email"><i class="fas fa-envelope me-2"></i>Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="Email"
+                    formControlName="email"
+                  />
+                  <label for="email">Email</label>
+                  <div *ngIf="isInvalid('email')" class="text-danger">
+                    Please provide a valid email.
+                  </div>
                 </div>
               </div>
 
-              <!-- Phone Number -->
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="tel" class="form-control form-control-lg" id="phone" placeholder="Phone Number" required>
-                  <label for="phone"><i class="fas fa-phone me-2"></i>Phone Number</label>
+                  <input
+                    type="text"
+                    id="phoneNumber"
+                    class="form-control"
+                    placeholder="Phone Number"
+                    formControlName="phoneNumber"
+                  />
+                  <label for="phoneNumber">Phone Number</label>
+                  <div *ngIf="isInvalid('phoneNumber')" class="text-danger">
+                    Phone number must be in the format +123456789.
+                  </div>
                 </div>
               </div>
 
-              <!-- Date of Birth -->
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="date" class="form-control form-control-lg" id="birthDate" placeholder="Date of Birth" required>
-                  <label for="birthDate"><i class="fas fa-calendar-alt me-2"></i>Date of Birth</label>
+                  <input
+                    type="date"
+                    id="birthDate"
+                    class="form-control"
+                    placeholder="Birth Date"
+                    formControlName="birthDate"
+                  />
+                  <label for="birthDate">Birth Date</label>
+                  <div *ngIf="isInvalid('birthDate')" class="text-danger">
+                    Birth date must be in the past.
+                  </div>
                 </div>
               </div>
 
-              <!-- Address -->
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="text" class="form-control form-control-lg" id="address" placeholder="Address" required>
-                  <label for="address"><i class="fas fa-map-marker-alt me-2"></i>Address</label>
+                  <input
+                    type="text"
+                    id="address"
+                    class="form-control"
+                    placeholder="Address"
+                    formControlName="address"
+                  />
+                  <label for="address">Address</label>
+                  <div *ngIf="isInvalid('address')" class="text-danger">
+                    Address is required.
+                  </div>
                 </div>
               </div>
 
-              <!-- Password -->
               <div class="col-md-6">
                 <div class="form-floating">
-                  <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
-                  <label for="password"><i class="fas fa-lock me-2"></i>Password</label>
-                </div>
-              </div>
-
-              <!-- Confirm Password -->
-              <div class="col-md-6">
-                <div class="form-floating">
-                  <input type="password" class="form-control form-control-lg" id="confirmPassword" placeholder="Confirm Password" required>
-                  <label for="confirmPassword"><i class="fas fa-lock me-2"></i>Confirm Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    placeholder="Password"
+                    formControlName="password"
+                  />
+                  <label for="password">Password</label>
+                  <div *ngIf="isInvalid('password')" class="text-danger">
+                    Password is required.
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Register Button -->
-            <button type="submit" class="btn btn-primary btn-lg w-100 py-3 mt-4">
-              <i class="fas fa-user-plus me-2"></i>Register
+            <button type="submit" class="btn btn-primary mt-3" [disabled]="registerForm.invalid">
+              Register
             </button>
           </form>
+
           <hr class="my-4">
-          <!-- Login Link -->
           <div class="text-center">
-            <p class="mb-0" style="font-size: 1.1rem;">Already have an account?
-              <a href="/login" class="text-primary fw-bold">Login Here</a>
+            <p class="mb-0" style="font-size: 1.1rem;">
+              Already have an account? <a href="/login" class="text-primary fw-bold">Login Here</a>
             </p>
           </div>
         </div>
@@ -140,9 +170,3 @@
   </div>
 </div>
 <!-- Register End -->
-
-
-
-
-<!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>

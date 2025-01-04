@@ -1,21 +1,70 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { Component,OnInit, AfterViewInit } from '@angular/core';
+import { RouterOutlet, RouterModule, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../services/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule],
+  imports: [RouterOutlet, RouterModule, CommonModule, ReactiveFormsModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
 export class LoginPageComponent {
 
-  constructor(private titleService: Title) {
+  loginForm!: FormGroup; // FormGroup pour le formulaire de connexion
+  isLoading: boolean = false; // Indicateur de chargement
+  errorMessage: string = ''; // Message d'erreur en cas d'éche
+
+  constructor(
+    private titleService: Title,
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router) {
     // Définir le titre ici
     this.titleService.setTitle('IB - Login Page');
   }
+
+
+  ngOnInit(): void {
+    // Initialisation du formulaire avec les champs nécessaires
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
+
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      this.isLoading = true;
+      this.errorMessage = ''; // Réinitialiser les messages d'erreur
+
+      const credentials = this.loginForm.value; // Récupérer les données du formulaire
+
+      this.authService.login(credentials).subscribe(
+        (response) => {
+          this.isLoading = false;
+
+          // Stocker l'ID utilisateur ou le jeton si nécessaire
+          console.log('Login successful, user ID:', response);
+
+          // Redirection après connexion réussie
+          this.router.navigate(['/user-dashboard']);
+        },
+        (error) => {
+          this.isLoading = false;
+          this.errorMessage = 'Invalid email or password. Please try again.';
+          console.error('Login error:', error);
+        }
+      );
+    } else {
+      this.errorMessage = 'Please fill in the form correctly.';
+    }
+  }
+
 
   ngAfterViewInit(): void {
     // Initialize features after DOM is rendered

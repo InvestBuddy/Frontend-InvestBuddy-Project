@@ -1,6 +1,6 @@
 /* Container Styling */
 .container-xxl {
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  background: linear-gradient(135deg, #f8f9fa, #f5e6e6);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -10,57 +10,23 @@
   position: relative;
 }
 
-/* Email Success Wrapper */
-.email-success-wrapper {
-  animation: fadeIn 1.5s ease-in-out;
+/* Error Icon */
+.error-icon-wrapper {
+  animation: shake 1s ease-in-out;
 }
 
-.email-success-wrapper .email-icon {
-  width: 100px;
-  height: 100px;
-  background: #d4edda;
+.error-icon {
+  width: 120px;
+  height: 120px;
+  background: #f8d7da;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #28a745;
-  font-size: 50px;
+  color: #dc3545;
+  font-size: 60px;
   margin: 0 auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* ID Icon Wrapper */
-.id-icon-wrapper {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  animation: float 3s infinite ease-in-out;
-}
-
-/* ID Icon Styling */
-.id-icon {
-  width: 130px;
-  height: 130px;
-  background: #ffffff;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #007bff;
-  font-size: 70px;
-  z-index: 2;
-  position: relative;
-}
-
-/* Floating Animation */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(-10px);
-  }
-  50% {
-    transform: translateY(10px);
-  }
 }
 
 /* Title */
@@ -76,20 +42,20 @@ p {
   line-height: 1.8;
 }
 
-/* Verification Steps */
-.verification-steps {
+/* Suggestions Section */
+.suggestions {
   max-width: 600px;
   font-size: 1rem;
   color: #6c757d;
 }
 
-.verification-item {
+.suggestion-item {
   display: flex;
   align-items: start;
   gap: 15px;
 }
 
-.verification-item i {
+.suggestion-item i {
   flex-shrink: 0;
   font-size: 2rem;
 }
@@ -118,18 +84,7 @@ p {
     font-size: 1rem;
   }
 
-  .email-success-wrapper .email-icon {
-    width: 70px;
-    height: 70px;
-    font-size: 35px;
-  }
-
-  .id-icon-wrapper {
-    width: 100px;
-    height: 100px;
-  }
-
-  .id-icon {
+  .error-icon {
     width: 80px;
     height: 80px;
     font-size: 50px;
@@ -139,27 +94,29 @@ p {
     font-size: 1rem;
   }
 
-  .verification-item i {
+  .suggestion-item i {
     font-size: 1.5rem;
   }
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+/* Shake Animation for the Error Icon */
+@keyframes shake {
+  0% {
+    transform: translateX(-10px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  25% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
-
-
-
-
-
 
 
 

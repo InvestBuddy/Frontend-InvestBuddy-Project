@@ -1,0 +1,18 @@
+<div class="container text-center mt-5 success-container">
+  <div *ngIf="isLoading" class="loading">
+    <h1>🔄 Verifying Your Email...</h1>
+    <p>Please wait while we confirm your email verification.</p>
+  </div>
+
+  <div *ngIf="!isLoading && isVerified" class="success-box">
+    <h1 class="success-title">🎉 Email Verified Successfully! 🎉</h1>
+    <p class="success-message">Your email has been verified. You can now log in to your account.</p>
+    <a routerLink="/login" class="btn btn-success btn-lg rounded-pill mt-4 shadow">Go to Login</a>
+  </div>
+
+  <div *ngIf="!isLoading && !isVerified" class="error-box">
+    <h1 class="error-title">❌ Verification Failed</h1>
+    <p class="error-message">We couldn't verify your email. Please try again or contact support.</p>
+    <a routerLink="/login" class="btn btn-danger btn-lg rounded-pill mt-4 shadow">Go to Login</a>
+  </div>
+</div>

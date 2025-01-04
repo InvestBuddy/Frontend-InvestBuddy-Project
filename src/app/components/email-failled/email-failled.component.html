@@ -44,7 +44,22 @@
 
 
 
+
+
+
 <div class="container-xl wrap  align-items-center justify-content-center">
+  <div class="id-icon-wrapper mx-auto mb-5">
+
+  </div>
+  <div class="id-icon-wrapper mx-auto mb-5">
+
+  </div>
+</div>
+
+<div class="container-xl wrap  align-items-center justify-content-center">
+  <div class="id-icon-wrapper mx-auto mb-5">
+
+  </div>
   <div class="id-icon-wrapper mx-auto mb-5">
 
   </div>
@@ -52,48 +67,70 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container-xxl py-5 d-flex align-items-center justify-content-center">
   <div class="container text-center">
-    <!-- Animated ID Icon -->
-    <div class="id-icon-wrapper mx-auto mb-5">
-      <div class="id-icon">
-        <i class="fas fa-id-card text-primary"></i>
+
+<div class="container-xl wrap  align-items-center justify-content-center">
+  <div class="id-icon-wrapper mx-auto mb-5">
+
+  </div>
+  <div class="id-icon-wrapper mx-auto mb-5">
+
+  </div>
+</div>
+    <!-- Error Icon -->
+    <div class="error-icon-wrapper mx-auto mb-4">
+      <div class="error-icon">
+        <i class="fas fa-exclamation-circle text-danger"></i>
       </div>
     </div>
 
     <!-- Title -->
-    <h1 class="text-primary fw-bold mb-4">Identity Verification Required</h1>
+    <h1 class="text-danger fw-bold mb-4">Email Verification Failed</h1>
 
     <!-- Description -->
-    <p class="text-muted lead mb-5">
-      To ensure compliance and secure your account, please complete the identity verification process.
+    <p class="text-muted lead mb-4">
+      Oops! We couldn't verify your email address. Please check your inbox for the verification email or request a new one.
     </p>
 
-    <!-- Verification Steps -->
-    <div class="verification-steps text-start mx-auto mb-4">
-      <div class="verification-item d-flex align-items-start mb-3">
-        <i class="fas fa-id-card fa-2x text-success me-3"></i>
+    <!-- Suggestions -->
+    <div class="suggestions text-start mx-auto mb-4">
+      <div class="suggestion-item d-flex align-items-start mb-3">
+        <i class="fas fa-envelope fa-2x text-info me-3"></i>
         <p class="mb-0">
-          <strong>Government-Issued ID:</strong> Ensure you have a valid ID such as a Passport, Driver’s License, or National ID.
+          Ensure you've entered the correct email address during registration.
         </p>
       </div>
-      <div class="verification-item d-flex align-items-start mb-3">
-        <i class="fas fa-camera fa-2x text-info me-3"></i>
+      <div class="suggestion-item d-flex align-items-start mb-3">
+        <i class="fas fa-sync fa-2x text-warning me-3"></i>
         <p class="mb-0">
-          <strong>Live Selfie:</strong> Use your smartphone or webcam to take a selfie during the verification process.
+          Check your spam or junk folder for the verification email.
         </p>
       </div>
-      <div class="verification-item d-flex align-items-start mb-3">
-        <i class="fas fa-lightbulb fa-2x text-warning me-3"></i>
+      <div class="suggestion-item d-flex align-items-start mb-3">
+        <i class="fas fa-paper-plane fa-2x text-success me-3"></i>
         <p class="mb-0">
-          <strong>Proper Environment:</strong> Ensure you are in a well-lit, quiet space for accurate verification.
+          If the issue persists, click the button below to resend the verification email.
         </p>
       </div>
     </div>
 
-    <!-- CTA Button -->
-    <button class="btn btn-primary px-5 py-3 rounded-pill" onclick="triggerKycVerification()">
-      <i class="fas fa-play me-2"></i> Start Verification
+    <!-- Resend Button -->
+    <button class="btn btn-primary px-5 py-3 rounded-pill" onclick="resendVerificationEmail()">
+      <i class="fas fa-envelope-open-text me-2"></i> Resend Verification Email
     </button>
   </div>
 </div>
