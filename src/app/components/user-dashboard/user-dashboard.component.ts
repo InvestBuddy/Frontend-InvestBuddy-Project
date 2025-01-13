@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 // Import Chart.js
@@ -9,7 +9,7 @@ import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.css']
 })

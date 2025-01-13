@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
-import { RouterOutlet, RouterModule, Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule, ReactiveFormsModule],
+  imports: [RouterModule, CommonModule, ReactiveFormsModule],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css'
 })
@@ -69,7 +69,7 @@ export class RegisterPageComponent {
   onSubmit() {
     if (this.registerForm.valid) {
       const payload = this.registerForm.value;
-  
+
       this.authService.registerUser(payload).subscribe(
         (response) => {
           // Redirection vers la page d'instruction
@@ -84,7 +84,7 @@ export class RegisterPageComponent {
       alert('Please fill in all required fields correctly.');
     }
   }
-  
+
 
 
   ngAfterViewInit(): void {

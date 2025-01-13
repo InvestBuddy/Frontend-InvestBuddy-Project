@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit } from '@angular/core';
-import { RouterOutlet, RouterModule } from '@angular/router';
+import { Component } from '@angular/core';
+import {RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-profil',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './user-profil.component.html',
   styleUrl: './user-profil.component.css'
 })
