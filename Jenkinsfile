@@ -6,8 +6,10 @@ pipeline {
     }
 
     stages {
+    stages {
         stage('Checkout') {
             steps {
+                // Checkout the code from the repository using the configured Git credentials
                 checkout([$class: 'GitSCM',
                           branches: [[name: 'main']],
                           userRemoteConfigs: [[url: 'https://github.com/InvestBuddy/Frontend.git', credentialsId: 'git']]])
