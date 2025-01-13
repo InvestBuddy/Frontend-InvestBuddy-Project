@@ -205,3 +205,56 @@
 
 
 
+
+
+
+
+
+.team-item:hover .overlay-role {
+  opacity: 1; /* Rendre visible lors du hover */
+}
+
+
+.team-item:hover img {
+  opacity: 0; /* Masquer le contenu de base pour ne laisser apparaître que le rôle */
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+
+
+/* Style pour les icônes de rôle */
+.role-icon {
+  margin-right: 8px; /* Espace entre l'icône et le texte */
+  font-size: 1.3rem; /* Taille légèrement plus grande pour attirer l'attention */
+  color: #ffffff; /* Icône blanche pour un bon contraste */
+  vertical-align: middle;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Style pour le texte de rôle */
+.team-text span {
+  background-color: #87cefa; /* Bleu ciel plus clair */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  display: inline-flex; /* Alignement des icônes et du texte */
+  align-items: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0.8rem;
+}
+
+/* Hover sur le texte de rôle */
+.team-text span:hover {
+  background-color: #add8e6; /* Bleu ciel encore plus clair */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Effet sur l'icône lors du hover */
+.team-text span:hover .role-icon {
+  transform: scale(1.2); /* Légère mise en avant de l'icône */
+  color: #fff;
+}

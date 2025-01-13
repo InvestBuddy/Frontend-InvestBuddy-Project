@@ -16,17 +16,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class RegisterPageComponent {
 
   registerForm: FormGroup;
-  // formFields = [
-  //   { id: 'firstName', controlName: 'firstName', label: 'First Name', icon: 'fas fa-user me-2', type: 'text', placeholder: 'First Name' },
-  //   { id: 'lastName', controlName: 'lastName', label: 'Last Name', icon: 'fas fa-user-tag me-2', type: 'text', placeholder: 'Last Name' },
-  //   { id: 'email', controlName: 'email', label: 'Email', icon: 'fas fa-envelope me-2', type: 'email', placeholder: 'name@example.com' },
-  //   { id: 'phone', controlName: 'phone', label: 'Phone Number', icon: 'fas fa-phone me-2', type: 'tel', placeholder: 'Phone Number' },
-  //   { id: 'birthDate', controlName: 'birthDate', label: 'Date of Birth', icon: 'fas fa-calendar-alt me-2', type: 'date', placeholder: 'Date of Birth' },
-  //   { id: 'address', controlName: 'address', label: 'Address', icon: 'fas fa-map-marker-alt me-2', type: 'text', placeholder: 'Address' },
-  //   { id: 'password', controlName: 'password', label: 'Password', icon: 'fas fa-lock me-2', type: 'password', placeholder: 'Password' },
-  //   { id: 'confirmPassword', controlName: 'confirmPassword', label: 'Confirm Password', icon: 'fas fa-lock me-2', type: 'password', placeholder: 'Confirm Password' },
-  // ];
-
 
   constructor(private fb: FormBuilder, private authService: AuthService,private titleService: Title, private router: Router) {
     // Définir le titre ici
