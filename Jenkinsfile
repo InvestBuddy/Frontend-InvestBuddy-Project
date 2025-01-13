@@ -6,7 +6,6 @@ pipeline {
     }
 
     stages {
-    stages {
         stage('Checkout') {
             steps {
                 // Checkout the code from the repository using the configured Git credentials
@@ -15,7 +14,7 @@ pipeline {
                           userRemoteConfigs: [[url: 'https://github.com/InvestBuddy/Frontend.git', credentialsId: 'git']]])
             }
         }
-       stage('SonarQube Analysis') {
+        stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
                    bat 'npm install'
@@ -34,7 +33,8 @@ pipeline {
         stage('Push Frontend Image') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                   bat "echo %DOCKER_PASSWORD% | docker login -u %DOCKER_USERNAME% %DOCKER_PASSWORD%"
+                   // The docker login command was not correct, this is the correct way to pass the password
+                   bat "docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%"
                     bat "docker push ${IMAGE_NAME}"
                 }
             }
