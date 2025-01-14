@@ -5,12 +5,11 @@ import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ParticulesDashComponent } from "../shared/particules-dash/particules-dash.component"
 import { ThreeParticulesComponent } from "../shared/three-particles/three-particles.component";
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, ReactiveFormsModule, ParticulesDashComponent, ThreeParticulesComponent],
+  imports: [RouterModule, CommonModule, ReactiveFormsModule, ThreeParticulesComponent],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })

@@ -34,7 +34,9 @@
               "src/assets/lib/owlcarousel/owl.carousel.min.js",
               "src/assets/lib/counterup/counterup.min.js",
               "src/assets/js/main.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+
+
 
 
 

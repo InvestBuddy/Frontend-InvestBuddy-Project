@@ -3,7 +3,7 @@ import { NgxParticlesModule } from '@tsparticles/angular';
 import { loadFull } from 'tsparticles';
 
 // Importation du fichier JSON
-import particlesConfig from '/home/med/MyProjects/OracleProject/frontend/public/assets/particlesjs-config.json';
+import particlesConfig from '../../../../../public/assets/particlesjs-config.json';
 
 @Component({
   selector: 'app-particules-dash',

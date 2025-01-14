@@ -5,11 +5,12 @@ import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ParticulesDashComponent } from "../shared/particules-dash/particules-dash.component";
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [RouterModule, CommonModule, ReactiveFormsModule],
+  imports: [RouterModule, CommonModule, ReactiveFormsModule, ParticulesDashComponent],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.css'
 })

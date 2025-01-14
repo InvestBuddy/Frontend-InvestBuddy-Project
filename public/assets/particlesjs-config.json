@@ -8,7 +8,7 @@
       }
     },
     "color": {
-      "value": "#ff0000"
+      "value": "#00BFFF"
     },
     "shape": {
       "type": "polygon",
@@ -48,7 +48,7 @@
     "line_linked": {
       "enable": false,
       "distance": 200,
-      "color": "#ffffff",
+      "color": "#00BFFF",
       "opacity": 1,
       "width": 2
     },

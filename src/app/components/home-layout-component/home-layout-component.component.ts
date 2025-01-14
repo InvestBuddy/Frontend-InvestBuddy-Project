@@ -1,25 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { ThreeParticulesComponent } from "../shared/three-particles/three-particles.component";
+import 'zone.js';  // Required for Angular
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-home-layout',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, ThreeParticulesComponent],
   templateUrl: './home-layout-component.component.html',
   styleUrls: ['./home-layout-component.component.css'],
 
 })
 export class HomeLayoutComponent implements AfterViewInit {
+  showParticles: boolean = true;
+  fadeOutParticles: boolean = false;  // New boolean for fade-out effect
 
-  constructor(private titleService: Title) {
-    // Définir le titre ici
+  constructor(private titleService: Title, private cdr: ChangeDetectorRef) {
+    timer(6000).subscribe(() => {
+      this.showParticles = false;
+    });
     this.titleService.setTitle('IB - Home Page');
   }
 
+
   ngAfterViewInit(): void {
-    // Initialize features after DOM is rendered
     this.initSpinner();
     this.initWOW();
     this.initFixedNavbar();
@@ -28,6 +35,7 @@ export class HomeLayoutComponent implements AfterViewInit {
     this.initProjectCarousel();
     this.initTestimonialCarousel();
     this.initHeaderCarousel();
+
   }
 
   private initSpinner(): void {
@@ -40,11 +48,13 @@ export class HomeLayoutComponent implements AfterViewInit {
   }
 
   private initWOW(): void {
-    // Initialize WOW.js animations
-    if ((window as any).WOW) {
+    if (typeof (window as any).WOW !== 'undefined') {
       new (window as any).WOW().init();
+    } else {
+      console.warn('WOW.js not loaded');
     }
   }
+
 
   private initFixedNavbar(): void {
     const fixedTop = document.querySelector('.fixed-top') as HTMLElement;

@@ -83,7 +83,7 @@ export class ThreeParticulesComponent implements OnInit, OnDestroy {
   private animateParticlesToFormText(text: string): void {
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d')!;
-    canvas.width = 1000;
+    canvas.width = 1300;
     canvas.height = 200;
     context.font = 'bold 150px Arial';
     context.fillStyle = '#ffffff'; // White text

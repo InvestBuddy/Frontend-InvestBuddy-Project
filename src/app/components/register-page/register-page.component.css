@@ -270,3 +270,52 @@ a.text-primary:hover {
 }
 }
 
+
+
+.body{
+  background: transparent !important; /* Ensure border doesn't carry a background */
+
+
+}/* Ensure transparency for the entire structure */
+.container-xxl {
+  background: transparent !important; /* Override any inherited background */
+}
+
+.container {
+  background: transparent !important;
+  z-index: 45465464;
+}
+
+.row {
+  background: transparent !important; /* Ensure transparency */
+  z-index: 45465464;
+
+}
+
+.col-lg-5 {
+  background: transparent !important; /* Ensure transparency */
+  z-index: 45465464;
+
+}
+
+.bg-light {
+  background: transparent !important; /* Override default light background */
+}
+
+.bg-white {
+  background: transparent !important; /* Override default white background */
+}
+
+.border {
+  background: transparent !important; /* Ensure border doesn't carry a background */
+  border: none; /* Optional: Remove border if not needed */
+}
+.container-fluid{
+  background: transparent !important; /* Ensure border doesn't carry a background */
+
+}
+
+.navbar{
+  background: transparent !important; /* Ensure border doesn't carry a background */
+
+}

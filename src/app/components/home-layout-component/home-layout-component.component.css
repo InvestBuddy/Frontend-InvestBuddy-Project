@@ -258,3 +258,15 @@
   transform: scale(1.2); /* Légère mise en avant de l'icône */
   color: #fff;
 }
+
+
+
+.particles-wrapper {
+  transition: opacity 1s ease-out;
+  opacity: 1;
+}
+
+.particles-wrapper.fade-out {
+  opacity: 0;  /* Make it gradually disappear */
+  pointer-events: none;  /* Disable interactions */
+}
