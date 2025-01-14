@@ -36,3 +36,71 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+
+
+
+
+
+
+
+
+/* Notification Container Styling */
+.notification-container {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px; /* Space between the bell and email emoji */
+}
+
+/* Bell Icon Styling */
+.notification-bell {
+  font-size: 1.5rem; /* Adjust bell size */
+  color: #007bff; /* Match the blue theme */
+  animation: pulse-bell 1.5s infinite ease-in-out;
+}
+
+/* Notification Badge Styling */
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #e32b2b; /* Red for notifications */
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 3px 6px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Email Icon Animation */
+.email-icon {
+  display: inline-block;
+  animation: vibrate 0.5s infinite ease-in-out;
+}
+
+/* Vibration Animation for Email Icon */
+@keyframes vibrate {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-1px);
+  }
+}
+
+/* Bell Pulsing Animation */
+@keyframes pulse-bell {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
