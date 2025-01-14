@@ -1,14 +1,10 @@
-<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-  <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
-</div>
-
 <!-- Navbar Start -->
 <div class="container-fluid fixed-top px-0">
   <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 bg-white shadow-sm">
-    <a href="#" class="navbar-brand ms-4 ms-lg-0">
+    <!-- <a href="#" class="navbar-brand ms-4 ms-lg-0">
       <h1 class="display-5 text-primary m-0 d-inline-block">InvestBuddy</h1>
       <img class="owl-logo d-inline-block" src="assets/img/LOGO_transparent.png" alt="Logo">
-    </a>
+    </a> -->
 
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>
@@ -50,148 +46,181 @@
 
 
 
+<div class="sidebar">
+  <button class="toggle-btn" (click)="toggleSidebar()">&#9776;</button>
+  <div class="logo">
+    <img src="assets/img/LOGO_transparent.png" alt="Logo" class="img-fluid" />
+  </div>
+  <ul>
+    <li class="active">
+      <a href="#"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+    </li>
+    <li>
+      <a href="#portfolio"><i class="fas fa-chart-pie"></i> <span>Portfolio</span></a>
+    </li>
+    <li>
+      <a href="#performance"><i class="fas fa-chart-line"></i> <span>Performance</span></a>
+    </li>
+    <li>
+      <a href="#education"><i class="fas fa-book"></i> <span>Education</span></a>
+    </li>
+    <li>
+      <a href="#settings"><i class="fas fa-cog"></i> <span>Settings</span></a>
+    </li>
+  </ul>
+  <div class="footer">
+    © 2025 InvestBuddy. All rights reserved.
+  </div>
+</div>
 
-<!-- User Dashboard -->
-<div class="container-xxl py-5 bg-light">
-  <!-- Page Header -->
-  <div class="container mb-4">
+
+
+
+
+
+
+
+
+
+
+<div class="main-content">
+
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+  <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+</div>
+
+
+
+
+
+
+
+<div class="main-content py-5 bg-light">
+  <!-- Header Section -->
+  <div class="container mb-5">
     <div class="d-flex align-items-center justify-content-between">
-      <h1 class="text-primary">User Dashboard</h1>
-      <div>
+      <h1 class="text-primary display-4">Welcome, User!</h1>
+      <button class="btn btn-danger d-flex align-items-center">
+        <i class="fas fa-sign-out-alt me-2"></i> Logout
+      </button>
+    </div>
+    <p class="text-muted">Track your portfolio performance and explore insights tailored for you.</p>
+  </div>
 
-
-        <!-- Logout Button -->
-        <a href="/">
-          <button class="btn btn-danger">
-            <i class="fas fa-sign-out-alt me-2"></i> Logout
-          </button>
-        </a>
+  <!-- Dashboard Summary Section -->
+  <div class="container mb-5">
+    <div class="row g-4">
+      <div class="col-md-3 col-sm-6">
+        <div class="card text-center shadow-sm border-0 bg-white p-4">
+          <div class="card-body">
+            <i class="fas fa-wallet fa-3x text-primary mb-3"></i>
+            <h5 class="card-title">Portfolio Balance</h5>
+            <h3 class="card-text text-primary">$10,230</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card text-center shadow-sm border-0 bg-white p-4">
+          <div class="card-body">
+            <i class="fas fa-coins fa-3x text-success mb-3"></i>
+            <h5 class="card-title">Monthly Contributions</h5>
+            <h3 class="card-text text-success">$500</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card text-center shadow-sm border-0 bg-white p-4">
+          <div class="card-body">
+            <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
+            <h5 class="card-title">Performance</h5>
+            <h3 class="card-text text-info">+15%</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card text-center shadow-sm border-0 bg-white p-4">
+          <div class="card-body">
+            <i class="fas fa-briefcase fa-3x text-warning mb-3"></i>
+            <h5 class="card-title">Investments</h5>
+            <h3 class="card-text text-warning">12</h3>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- Dashboard Content -->
-  <div class="container">
-    <!-- Summary Cards -->
-    <div class="row g-4 mb-5">
-      <div class="col-lg-3">
-        <div class="card text-center shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Portfolio Balance</h5>
-            <p class="card-text display-6 text-primary">$10,230</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="card text-center shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Monthly Contributions</h5>
-            <p class="card-text display-6 text-primary">$500</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="card text-center shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Performance</h5>
-            <p class="card-text display-6 text-success">+15%</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3">
-        <div class="card text-center shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Investments</h5>
-            <p class="card-text display-6 text-primary">12</p>
-          </div>
-        </div>
-      </div>
-    </div>
 
   <!-- Charts Section -->
-<div class="row g-4 d-flex align-items-center">
-  <!-- Portfolio Allocation Chart -->
-  <div class="col-lg-6">
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <h5 class="card-title">Portfolio Allocation</h5>
-        <canvas id="portfolioChart"></canvas>
+  <div class="container mb-5">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="card shadow-sm border-0 bg-white p-4">
+          <div class="card-body">
+            <h5 class="card-title">Portfolio Allocation</h5>
+            <canvas id="portfolioChart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card shadow-sm border-0 bg-white p-4">
+          <div class="card-body">
+            <h5 class="card-title">Performance Trends</h5>
+            <canvas id="performanceTrendsChart"></canvas>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Performance Trends Chart -->
-  <div class="col-lg-6">
-    <div class="card shadow-sm">
+  <!-- Investment Suggestions Section -->
+  <div class="container mb-5">
+    <div class="card shadow-sm border-0 bg-white p-4">
       <div class="card-body">
-        <h5 class="card-title text-primary">Performance Trends</h5>
-        <canvas id="performanceTrendsChart"></canvas>
-        <p class="text-muted text-center mt-3">
-          Track your portfolio growth and investment performance over time.
-        </p>
+        <h5 class="card-title">Investment Suggestions</h5>
+        <p class="text-muted">Discover the best investment opportunities tailored to you.</p>
+        <button class="btn btn-primary w-100 py-3">
+          <i class="fas fa-lightbulb me-2"></i> Get AI Suggestions
+        </button>
       </div>
     </div>
   </div>
-</div>
 
-
-    <!-- AI Investment Spinner -->
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Investment Suggestions</h5>
-            <p class="text-muted">Discover the best investment opportunities tailored to you.</p>
-            <button class="btn btn-primary w-100 py-3">
-              <i class="fas fa-sync-alt me-2"></i> Get AI Suggestions
-            </button>
-          </div>
-        </div>
+  <!-- Recent Activity Section -->
+  <div class="container mb-5">
+    <h5 class="mb-4">Recent Activity</h5>
+    <div class="list-group">
+      <div class="list-group-item">
+        <i class="fas fa-arrow-up text-success me-3"></i>Deposited $500 on <strong>28 Dec 2024</strong>
+      </div>
+      <div class="list-group-item">
+        <i class="fas fa-shopping-cart text-primary me-3"></i>Bought 10 shares of Tesla on <strong>25 Dec 2024</strong>
+      </div>
+      <div class="list-group-item">
+        <i class="fas fa-dollar-sign text-warning me-3"></i>Received $100 dividend on <strong>20 Dec 2024</strong>
       </div>
     </div>
+  </div>
 
-    <!-- Recent Activity -->
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Recent Activity</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <i class="fas fa-arrow-up text-success me-2"></i>Deposited $500 on <strong>28 Dec 2024</strong>
-              </li>
-              <li class="list-group-item">
-                <i class="fas fa-shopping-cart text-primary me-2"></i>Bought 10 shares of Tesla on <strong>25 Dec 2024</strong>
-              </li>
-              <li class="list-group-item">
-                <i class="fas fa-dollar-sign text-warning me-2"></i>Received $100 dividend on <strong>20 Dec 2024</strong>
-              </li>
-            </ul>
-          </div>
-        </div>
+  <!-- Financial Education Section -->
+  <div class="container">
+    <h5 class="mb-4">Financial Education</h5>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <button class="btn btn-outline-primary w-100 p-4">
+          <i class="fas fa-book fa-2x mb-3"></i>
+          <br>Interactive Guides
+        </button>
       </div>
-    </div>
-
-    <!-- Financial Education -->
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Financial Education</h5>
-            <p class="text-muted">Explore our educational resources to enhance your financial literacy.</p>
-            <div class="d-grid gap-3">
-              <button class="btn btn-outline-primary">
-                <i class="fas fa-book me-2"></i> Interactive Guides
-              </button>
-              <button class="btn btn-outline-primary">
-                <i class="fas fa-chalkboard-teacher me-2"></i> Expert Insights
-              </button>
-              <button class="btn btn-outline-primary">
-                <i class="fas fa-tools me-2"></i> Investment Tools
-              </button>
-            </div>
-          </div>
-        </div>
+      <div class="col-md-4">
+        <button class="btn btn-outline-primary w-100 p-4">
+          <i class="fas fa-chalkboard-teacher fa-2x mb-3"></i>
+          <br>Expert Insights
+        </button>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-outline-primary w-100 p-4">
+          <i class="fas fa-tools fa-2x mb-3"></i>
+          <br>Investment Tools
+        </button>
       </div>
     </div>
   </div>
@@ -201,6 +230,4 @@
 
 
 
-
-
-
+</div>

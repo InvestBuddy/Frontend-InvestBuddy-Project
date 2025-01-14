@@ -6,6 +6,8 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ThreeParticulesComponent } from "../shared/three-particles/three-particles.component";
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login-page',
   standalone: true,
@@ -38,32 +40,62 @@ export class LoginPageComponent {
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      this.isLoading = true;
-      this.errorMessage = ''; // Réinitialiser les messages d'erreur
-
-      const credentials = this.loginForm.value; // Récupérer les données du formulaire
-
-      this.authService.login(credentials).subscribe(
-        (response) => {
-          this.isLoading = false;
-
-          // Stocker l'ID utilisateur ou le jeton si nécessaire
-          console.log('Login successful, user ID:', response);
-
-          // Redirection après connexion réussie
-          this.router.navigate(['/user-dashboard']);
-        },
-        (error) => {
-          this.isLoading = false;
-          this.errorMessage = 'Invalid email or password. Please try again.';
-          console.error('Login error:', error);
-        }
-      );
-    } else {
-      this.errorMessage = 'Please fill in the form correctly.';
+    if (this.loginForm.invalid) {
+      // Show an alert for incomplete form
+      Swal.fire({
+        icon: 'warning',
+        title: 'Incomplete Form',
+        text: 'Please fill in all the required fields correctly!',
+        confirmButtonColor: '#007bff',
+        background: '#f8f9fa',
+      });
+      return; // Prevent further execution
     }
+  
+    // Form is valid, proceed with login
+    this.isLoading = true;
+    this.errorMessage = ''; // Reset any previous error messages
+  
+    const credentials = this.loginForm.value; // Get form values
+  
+    this.authService.login(credentials).subscribe(
+      (response) => {
+        this.isLoading = false;
+  
+        // Success alert
+        Swal.fire({
+          icon: 'success',
+          title: 'Login Successful',
+          text: 'Welcome back to InvestBuddy!',
+          confirmButtonColor: '#28a745',
+          background: '#f8f9fa',
+        }).then(() => {
+          // Redirect after success
+          this.router.navigate(['/user-dashboard']);
+        });
+      },
+      (error) => {
+        this.isLoading = false;
+  
+        // Handle general login errorsdfg
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: error?.status === 401
+            ? 'Invalid email or password. Please try again.'
+            : 'An unexpected error occurred. Please try again later.',
+          confirmButtonColor: '#dc3545',
+          background: '#f8f9fa',
+        });
+  
+        console.error('Login error:', error);
+      }
+    );
   }
+  
+
+
+
 
 
   ngAfterViewInit(): void {

@@ -215,6 +215,15 @@ private initCounters(): void {
     });
   }
 }
+toggleSidebar(): void {
+  const sidebar = document.querySelector('.sidebar');
+  const content = document.querySelector('.main-content');
+  if (sidebar && content) {
+    sidebar.classList.toggle('collapsed');
+    content.classList.toggle('collapsed');
+  }
+}
+
 
 private initProjectCarousel(): void {
   const projectCarousel = document.querySelector('.project-carousel');

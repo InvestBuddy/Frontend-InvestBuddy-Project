@@ -1,5 +1,6 @@
 /* Center Form Vertically */
 .container-xxl {
+  z-index: -1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -258,6 +259,7 @@
 
 
 .body{
+
   background: transparent !important; /* Ensure border doesn't carry a background */
 
 
@@ -268,7 +270,7 @@
 
 .container {
   background: transparent !important;
-  z-index: 45465464;
+  z-index: 1;
 }
 
 .row {
@@ -304,3 +306,43 @@
   background: transparent !important; /* Ensure border doesn't carry a background */
 
 }
+
+
+
+
+
+
+
+
+
+
+.my-popup-class {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.my-title-class {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.my-button-class {
+  background-color: #28a745 !important;
+  color: #ffffff !important;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

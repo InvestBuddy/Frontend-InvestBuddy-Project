@@ -58,7 +58,9 @@ canvas {
 
 
 
-
+.nav{
+  background-color: transparent !important;
+}
 
 
 
@@ -89,7 +91,10 @@ canvas {
 
 
 
-
+.container-fluid{
+  background: transparent !important;
+  z-index: 1;
+}
 
 
 
@@ -210,4 +215,325 @@ canvas {
   }
 }
 
+}
+
+
+
+
+/* Global Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #283655, #1e1e2f);
+  background-size: 300% 300%;
+  animation: gradientBG 10s ease infinite;
+  color: #ffffff;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Sidebar Styling */
+.sidebar {
+  z-index: 55;
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #1f1f2e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: all 0.3s;
+}
+
+.sidebar.collapsed .logo {
+  font-size: 1.2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #c1c1c1;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background: #007bff;
+  color: #ffffff;
+}
+
+.sidebar ul li a i {
+  font-size: 1.4rem;
+}
+
+.sidebar ul li.active a {
+  background: #007bff;
+  color: #ffffff;
+}
+
+.sidebar .toggle-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+
+.sidebar.collapsed .toggle-btn {
+  transform: rotate(180deg);
+}
+
+.sidebar .footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #c1c1c1;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  padding: 2rem;
+  transition: margin-left 0.3s;
+}
+
+.sidebar.collapsed + .main-content {
+  margin-left: 70px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 15px;
+  color: #ffffff;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.card-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h1, h5 {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Button Enhancements */
+.btn-primary {
+  background: linear-gradient(45deg, #007bff, #6f42c1);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #6f42c1, #007bff);
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Dynamic Charts */
+canvas {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+}
+
+/* Footer */
+.footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #c1c1c1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sidebar .toggle-btn {
+  margin-top: 99px;
+  position: absolute; /* Ensure it doesn't get hidden in collapsed mode */
+  top: 10px; /* Adjust this for better positioning */
+  right: -15px; /* Pull it slightly into view when sidebar is collapsed */
+  background: #007bff; /* Add a visible background */
+  border: none;
+  border-radius: 50%; /* Make it a circle */
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10; /* Ensure it's on top */
+}
+
+.sidebar.collapsed .toggle-btn {
+  right: -15px; /* Ensure the button stays visible when collapsed */
+}
+
+
+
+.sidebar ul li a span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.sidebar.collapsed ul li a span {
+  display: none; /* Hide the text when collapsed */
+}
+
+.sidebar .footer {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #c1c1c1;
+}
+
+.sidebar.collapsed .footer {
+  display: none; /* Hide the footer in collapsed mode */
+}
+
+
+
+
+.main-content {
+  margin-top: 99px;
+  margin-left: 250px;
+  padding: 2rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar.collapsed + .main-content {
+  margin-left: 70px; /* Match the collapsed sidebar width */
+}
+
+
+
+@media (max-width: 991px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1050;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(-100%);
+  }
+
+  .sidebar .toggle-btn {
+    right: 15px; /* Ensure visibility */
+  }
+}
+
+
+
+
+
+
+
+
+.main-content {
+  background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+  padding-top: 60px; /* Account for fixed navbar */
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.list-group-item {
+  border: none;
+  padding: 15px 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.list-group-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
