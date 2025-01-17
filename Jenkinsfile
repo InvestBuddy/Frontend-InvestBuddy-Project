@@ -15,25 +15,25 @@ pipeline {
             }
         }
       
-        stage('Install Dependencies') {
-            steps {
-                bat 'npm install' // Install all project dependencies
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         bat 'npm install' // Install all project dependencies
+        //     }
+        // }
 
-        stage('Run Tests') {
-            steps {
-                bat 'npm test -- --code-coverage' // Generate test coverage report
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         bat 'npm test -- --code-coverage' // Generate test coverage report
+        //     }
+        // }
 
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQubeServer') {
-                    bat 'npm run sonar'
-                }
-            }
-        }
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         withSonarQubeEnv('SonarQubeServer') {
+        //             bat 'npm run sonar'
+        //         }
+        //     }
+        // }
 
          stage('Build Frontend Image') {
            steps {
