@@ -108,7 +108,7 @@ export interface UserProfileResponse {
   providedIn: 'root',
 })
 export class UserProfileService {
-  private apiUrl = 'http://localhost:8080/api/v1/profiles'; // Base URL for API requests
+  private apiUrl = 'http://user-profile-service:8082/api/v1/profiles'; // Base URL for API requests
 
   constructor(private http: HttpClient) {}
 
