@@ -18,7 +18,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
                    bat 'npm install'
-                   bat "sonar-scanner -Dsonar.login=%SONAR_TOKEN%"
+                   bat " npm sonar"
                 }
             }
         }
