@@ -2,9 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 
 // Import Chart.js
 import Chart from 'chart.js/auto';
+import { PredictionService, PredictionResponse } from 'src/app/services/prediction.service';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -14,43 +16,129 @@ import Chart from 'chart.js/auto';
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements AfterViewInit {
-  constructor(private titleService: Title) {
+  predictionResponse: PredictionResponse | null = null;
+
+  constructor(
+    private titleService: Title,
+    private predictionService: PredictionService
+  ) {
     // Set the page title
     this.titleService.setTitle('User - Dashboard');
   }
 
-  // Lifecycle hook to initialize charts after the view is rendered
-  ngAfterViewInit(): void {
-    this.initializePortfolioChart();
-    this.initializePerformanceChart();
-
-     // Initialize features after DOM is rendered
-  this.initSpinner();
-  this.initWOW();
-  this.initFixedNavbar();
-  this.initBackToTop();
-  this.initCounters();
-  this.initProjectCarousel();
-  this.initTestimonialCarousel();
-  this.initHeaderCarousel();
-
-
-
-
+  onLogout(): void {
+    // Logic to handle logout
+    console.log('Logout triggered!');
+    localStorage.clear();
+    Swal.fire({
+      icon: 'success',
+      title: 'Logged Out',
+      text: 'You have successfully logged out.',
+    }).then(() => {
+      window.location.href = '/';
+    });
   }
 
-  // Method to initialize the portfolio allocation chart
-  private initializePortfolioChart(): void {
+  // Lifecycle hook to initialize charts after the view is rendered
+  ngAfterViewInit(): void {
+    this.fetchPredictionData();
+
+    // Initialize features after DOM is rendered
+    this.initSpinner();
+    this.initWOW();
+    this.initFixedNavbar();
+    this.initBackToTop();
+    this.initCounters();
+    this.initProjectCarousel();
+    this.initTestimonialCarousel();
+    this.initHeaderCarousel();
+
+    console.log(localStorage.getItem('userId'));
+  }
+  private fetchPredictionData(): void {
+    const storedData = localStorage.getItem('userProfile');
+    if (!storedData) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'No Profile Found',
+        text: 'Please complete your profile first.',
+      });
+      return;
+    }
+
+    // Parse the stored user profile data
+    const userProfile = JSON.parse(storedData);
+
+    // Transform the data to match the expected prediction format
+    const formattedPredictionRequest = {
+      Gender: userProfile.gender.toLowerCase(),
+      City: userProfile.city,
+      Age: userProfile.age,
+      Income: userProfile.income,
+      Risk_Tolerance: this.mapRiskTolerance(userProfile.riskTolerance),
+      Investment_History: userProfile.investmentHistory.map((item: string) =>
+        this.mapInvestmentHistory(item)
+      ),
+      Financial_Objective: this.mapFinancialObjective(userProfile.financialObjective),
+      Preferred_Sector: this.mapPreferredSector(userProfile.preferredSector),
+      Investment_Frequency: this.mapInvestmentFrequency(userProfile.investmentFrequency),
+      PreferredDomain: userProfile.preferredDomains.map((domain: string) =>
+        this.mapPreferredDomain(domain)
+      ),
+    };
+
+    // Log the formatted request to verify its structure and values
+    console.log("Formatted Prediction Request:", JSON.stringify(formattedPredictionRequest, null, 2));
+
+    // Send the formatted data to the prediction service
+    this.predictionService.sendPredictionRequest(formattedPredictionRequest).subscribe({
+      next: (response: PredictionResponse) => {
+        this.predictionResponse = response;
+        console.log("Prediction Response:", response); // Log the response for debugging
+        this.initializeCharts(response);
+        Swal.fire({
+          icon: 'success',
+          title: 'Prediction Success',
+          text: `Recommended Domain: ${response.recommended_domain}`,
+        });
+      },
+      error: (err) => {
+        console.error("Prediction Error Response:", err); // Log the error response
+        Swal.fire({
+          icon: 'error',
+          title: 'Prediction Error',
+          text: 'There was an error while generating predictions.',
+        });
+      },
+    });
+  }
+
+
+  private initializeCharts(response: PredictionResponse): void {
+    this.initializePortfolioChart(response);
+    this.initializePerformanceChart(response);
+  }
+
+  private initializePortfolioChart(response: PredictionResponse): void {
     const portfolioCtx = document.getElementById('portfolioChart') as HTMLCanvasElement;
     if (portfolioCtx) {
+      const data = [
+        ...response.preferred_domains_sent.map(() => 30), // Assign equal weight for preferred domains
+        40, // Assign higher weight for the recommended domain
+      ];
+      const labels = [
+        ...response.preferred_domains_sent,
+        response.recommended_domain,
+      ];
+
       new Chart(portfolioCtx, {
         type: 'pie',
         data: {
-          labels: ['Stocks', 'ETFs', 'Bonds', 'Crypto'],
+          labels: labels,
           datasets: [
             {
-              data: [40, 30, 20, 10],
-              backgroundColor: ['#007bff', '#6f42c1', '#e83e8c', '#ffc107'],
+              data: data,
+              backgroundColor: ['#007bff', '#6f42c1', '#ffc107'],
             },
           ],
         },
@@ -58,99 +146,126 @@ export class UserDashboardComponent implements AfterViewInit {
     }
   }
 
-  // Method to initialize the performance trends chart
-  // Method to initialize the enhanced performance trends chart
-private initializePerformanceChart(): void {
-  const performanceTrendsCtx = document.getElementById('performanceTrendsChart') as HTMLCanvasElement;
-  if (performanceTrendsCtx) {
-    new Chart(performanceTrendsCtx, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-        datasets: [
-          {
-            label: 'Portfolio Value',
-            data: [1000, 1500, 2000, 2700, 3400, 4200, 5000],
-            borderColor: '#007bff',
-            backgroundColor: 'rgba(0, 123, 255, 0.2)',
-            pointBackgroundColor: '#007bff',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: '#007bff',
-            tension: 0.4, // Smooth curves
-            borderWidth: 3,
-          },
-          {
-            label: 'Market Index',
-            data: [950, 1450, 1950, 2500, 3200, 4000, 4700],
-            borderColor: '#28a745',
-            backgroundColor: 'rgba(40, 167, 69, 0.2)',
-            pointBackgroundColor: '#28a745',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: '#28a745',
-            tension: 0.4, // Smooth curves
-            borderWidth: 3,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            display: true,
-            position: 'top',
-            labels: {
-              font: {
-                size: 14,
-              },
+  private initializePerformanceChart(response: PredictionResponse): void {
+    const performanceTrendsCtx = document.getElementById('performanceTrendsChart') as HTMLCanvasElement;
+    if (performanceTrendsCtx) {
+      const labels = [...response.preferred_domains_sent, response.recommended_domain];
+      const data = labels.map((label) =>
+        label === response.recommended_domain ? 70 : 30 // Assign higher score for the recommended domain
+      );
+
+      new Chart(performanceTrendsCtx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Domains Contribution',
+              data: data,
+              backgroundColor: labels.map((label) =>
+                label === response.recommended_domain ? '#ffc107' : '#007bff'
+              ),
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
             },
           },
-          tooltip: {
-            callbacks: {
-              label: (tooltipItem: any) =>
-                `${tooltipItem.dataset.label}: $${tooltipItem.raw.toLocaleString()}`,
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Domains',
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: 'Contribution Score',
+              },
             },
           },
         },
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Months',
-              font: {
-                size: 14,
-                weight: 'bold',
-              },
-              color: '#555',
-            },
-            grid: {
-              display: false,
-            },
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'Portfolio Value ($)',
-              font: {
-                size: 14,
-                weight: 'bold',
-              },
-              color: '#555',
-            },
-            ticks: {
-              callback: (value: any) => `$${value.toLocaleString()}`,
-            },
-          },
-        },
-      },
-    });
+      });
+    }
   }
+
+  //------------ Mapping functions ---------------------
+  private mapGender(gender: string): string {
+    const genderMap: Record<string, string> = { MAN: 'man', WOMAN: 'woman' };
+    return genderMap[gender.toUpperCase()] || gender.toLowerCase();
+  }
+
+  private mapRiskTolerance(riskTolerance: string): string {
+    const riskToleranceMap: Record<string, string> = { LOW: 'low', MEDIUM: 'medium', HIGH: 'high' };
+    return riskToleranceMap[riskTolerance.toUpperCase()] || riskTolerance.toLowerCase();
+  }
+
+  private mapInvestmentHistory(item: string): string {
+    const investmentHistoryMap: Record<string, string> = {
+      IMMOBILIER: 'immobilier',
+      ACTIONS: 'actions',
+    };
+    return investmentHistoryMap[item.toUpperCase()] || item.toLowerCase();
+  }
+
+  private mapFinancialObjective(objective: string): string {
+    const financialObjectives: Record<string, string> = {
+      RETIREMENT: 'retraite',
+      SAVINGS: 'épargne de sécurité',
+      REAL_ESTATE_PURCHASE: 'achat immobilier',
+      CHILDREN_EDUCATION: 'éducation des enfants',
+      TRAVEL: 'voyages',
+      STARTER_SAVINGS: 'épargne de départ',
+      EDUCATION_INVESTMENT: 'investir dans l\'éducation',
+    };
+    return financialObjectives[objective.toUpperCase()] || objective.toLowerCase();
+  }
+
+
+  private mapPreferredSector(sector: string): string {
+    const preferredSectors: Record<string, string> = {
+      TECHNOLOGY: 'Technologie',
+      HEALTH: 'Santé',
+      ENERGY: 'Énergie',
+      FINANCE: 'Finance',
+      INDUSTRY: 'Industrie',
+      CONSUMPTION: 'Consommation',
+      REAL_ESTATE: 'Immobilier',
+      AGRICULTURE: 'Agriculture',
+      PHARMACEUTICAL: 'Pharmaceutique',
+    };
+    return preferredSectors[sector.toUpperCase()] || sector.toLowerCase();
+  }
+
+  private mapInvestmentFrequency(frequency: string): string {
+    const investmentFrequencies: Record<string, string> = {
+      MENSUEL: 'mensuel',
+      TRIMESTRIEL: 'trimestriel',
+      ANNUEL: 'annuel',
+    };
+    return investmentFrequencies[frequency.toUpperCase()] || frequency.toLowerCase();
+  }
+
+private mapPreferredDomain(domain: string): string {
+  const preferredDomains: Record<string, string> = {
+    ACTIONS: 'Actions',
+    CRYPTOCURRENCIES: 'Cryptomonnaies',
+    REAL_ESTATE: 'Immobilier',
+    BONDS: 'Obligations',
+    STARTUPS: 'Startups',
+    COMMODITIES: 'Matières premières',
+    ETF: 'ETF',
+    FUNDRAISING: 'Fundraising',
+    SOCIAL_INVESTMENT: 'Investissement Socialement Responsable'
+  };
+  return preferredDomains[domain.toUpperCase()] || domain.toUpperCase();
 }
-
-
-
-
 
 
 

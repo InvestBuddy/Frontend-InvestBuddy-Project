@@ -1,44 +1,43 @@
-/* General Styling */
-.container-xxl {
-  background: linear-gradient(to bottom right, #e3f2fd, #ffffff);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Spinner */
+#spinner {
+  display: none; /* Remove after debugging */
 }
 
-/* Profile Card */
-.profile-card {
+/* Background and Layout */
+.container-xxl {
+  padding-top: 70px; /* Increased to push the form lower */
+  margin-top: 180px; /* Extra spacing for visibility */
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  min-height: 100vh; /* Allows scrolling if needed */
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  justify-content: center;
+  z-index: -1;
+}
+
+/* Form Container */
+.bg-white {
   border-radius: 15px;
-  padding: 30px;
+  padding: 50px 30px; /* Slightly increased padding for the form */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Avatar */
-.avatar {
-  width: 80px;
-  height: 80px;
-  border: 2px solid #007bff;
-}
-
-/* Input Fields */
-.form-control {
+/* Form Inputs */
+.form-floating .form-control {
   border-radius: 10px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.form-control:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+.form-floating label {
+  color: #6c757d;
 }
 
-/* Labels */
-.form-label {
-  font-size: 14px;
-  color: #555;
+.form-floating .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
 }
 
-/* Buttons */
+/* Submit Button */
 .btn-primary {
   background: linear-gradient(45deg, #007bff, #0056b3);
   border: none;
@@ -49,29 +48,30 @@
   background: linear-gradient(45deg, #0056b3, #003580);
 }
 
-.btn-light {
-  background: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+/* Links */
+a.text-primary {
+  text-decoration: none;
 }
 
-.btn-light:hover {
-  background: #e9ecef;
+a.text-primary:hover {
+  text-decoration: underline;
 }
 
+/* Navbar Styling (Non-Fixed) */
+.navbar.bg-white {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1030; /* Ensure it stays above all other elements */
+}
 
-
-
-
-
-
-/* Active link styling */
+/* Active Link Styling */
 .navbar-nav .nav-link.active {
   color: #0d6efd !important;
   font-weight: bold;
 }
 
-/* Adjust button and link colors */
+/* Adjust Button and Link Colors */
 .navbar .btn-primary {
   background: linear-gradient(45deg, #0d6efd, #0056b3);
   border: none;
@@ -89,6 +89,65 @@
 .navbar .btn-light:hover {
   background-color: #e9ecef !important;
 }
+
+/* Adjust Logo Styling */
+.navbar-brand img.owl-logo {
+  height: 90px;
+  width: 100px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.navbar-brand img.owl-logo2 {
+  height: 30px;
+  width: 50px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* Testimonials */
+.testimonial-item {
+  background-color: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-text {
+  position: relative;
+  font-size: 16px;
+  color: #555555;
+}
+
+.testimonial-text i {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+}
+
+.owl-carousel .owl-dots .owl-dot span {
+  width: 12px;
+  height: 12px;
+  margin: 5px 7px;
+  display: inline-block;
+  background: #ddd;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.owl-carousel .owl-dots .owl-dot.active span {
+  background: #007bff;
+}
+
+.owl-carousel .owl-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+
+
+
 
 
 
@@ -165,8 +224,6 @@
   /* Navbar */
   .navbar {
     padding: 1rem;
-    background: transparent !important; /* Ensure border doesn't carry a background */
-
   }
 
     /* Social Media Icons - Adjust for Mobile */
@@ -212,5 +269,54 @@
 
   }
 }
+}
+
+
+
+.body{
+  background: transparent !important; /* Ensure border doesn't carry a background */
+
+
+}/* Ensure transparency for the entire structure */
+.container-xxl {
+  background: transparent !important; /* Override any inherited background */
+}
+
+.container {
+  background: transparent !important;
+  z-index: 1;
+}
+
+.row {
+  background: transparent !important; /* Ensure transparency */
+  z-index: 45465464;
+
+}
+
+.col-lg-5 {
+  background: transparent !important; /* Ensure transparency */
+  z-index: 45465464;
+
+}
+
+.bg-light {
+  background: transparent !important; /* Override default light background */
+}
+
+.bg-white {
+  background: transparent !important; /* Override default white background */
+}
+
+.border {
+  background: transparent !important; /* Ensure border doesn't carry a background */
+  border: none; /* Optional: Remove border if not needed */
+}
+.container-fluid{
+  background: transparent !important; /* Ensure border doesn't carry a background */
+
+}
+
+.navbar{
+  background: transparent !important; /* Ensure border doesn't carry a background */
 
 }

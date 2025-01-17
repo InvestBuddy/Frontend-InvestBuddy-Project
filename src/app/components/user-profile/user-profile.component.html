@@ -1,0 +1,189 @@
+<!-- Navbar Start -->
+<div class="container-fluid fixed-top px-0">
+  <nav class="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 bg-white shadow-sm">
+    <!-- <a href="#" class="navbar-brand ms-4 ms-lg-0">
+      <h1 class="display-5 text-primary m-0 d-inline-block">InvestBuddy</h1>
+      <img class="owl-logo d-inline-block" src="assets/img/LOGO_transparent.png" alt="Logo">
+    </a> -->
+
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav ms-auto p-4 p-lg-0">
+        <a href="#" class="nav-item nav-link active">Home</a>
+        <a href="#about" class="nav-item nav-link">About</a>
+        <a href="#services" class="nav-item nav-link">Services</a>
+        <a href="#contact" class="nav-item nav-link">Contact</a>
+      </div>
+      <!-- <div class="d-none d-lg-flex align-items-center"> -->
+        <!-- Register Button -->
+        <a href="/User-Profile" class="btn btn-primary btn-sm rounded-pill mx-2 d-flex align-items-center">
+          <i class="fas fa-user-circle me-2"></i> Your Profile
+        </a>
+
+        <!-- Social Media Icons -->
+        <a class="btn btn-light btn-sm-square rounded-circle ms-3" href="">
+          <small class="fab fa-facebook-f text-primary"></small>
+        </a>
+        <a class="btn btn-light btn-sm-square rounded-circle ms-3" href="">
+          <small class="fab fa-twitter text-primary"></small>
+        </a>
+        <a class="btn btn-light btn-sm-square rounded-circle ms-3" href="">
+          <small class="fab fa-linkedin-in text-primary"></small>
+        </a>
+      </div>
+      <a href="#" class="navbar-brand ms-4 ms-lg-0">
+        <img class="owl-logo2 d-inline-block" src="assets/img/maroc.png" alt="Logo">
+      </a>
+    <!-- </div> -->
+  </nav>
+</div>
+<!-- Navbar End -->
+
+
+
+
+
+
+
+<app-particules-dash></app-particules-dash>
+
+
+
+
+
+
+
+
+
+<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+  <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+</div>
+
+<div class="container-xxl py-5 bg-light vh-100 d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="bg-white border rounded p-5 shadow wow fadeInUp" data-wow-delay="0.3s">
+          <div class="text-center mb-4">
+            <h1 class="text-primary" style="font-size: 2.5rem;">Your Profile Awaits</h1>
+            <p class="text-muted" style="font-size: 1.2rem;">Just a few steps to unlock your potential!</p>
+
+          </div>
+          <form [formGroup]="userProfileForm" (ngSubmit)="onSubmit()">
+            <div class="row g-4">
+
+              <!-- User ID -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" id="userId" class="form-control" placeholder="User ID" formControlName="userId" readonly />
+                  <label for="userId">User ID</label>
+                </div>
+              </div>
+
+              <!-- City -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" id="city" class="form-control" placeholder="Enter City" formControlName="city" />
+                  <label for="city">City</label>
+                </div>
+              </div>
+
+              <!-- Age -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="number" id="age" class="form-control" placeholder="Age" formControlName="age" />
+                  <label for="age">Age</label>
+                </div>
+              </div>
+
+              <!-- Gender -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select id="gender" class="form-control" formControlName="gender">
+                    <option *ngFor="let gender of genderOptions" [value]="gender">{{ gender }}</option>
+                  </select>
+                  <label for="gender">Gender</label>
+                </div>
+              </div>
+
+              <!-- Risk Tolerance -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select id="riskTolerance" class="form-control" formControlName="riskTolerance">
+                    <option *ngFor="let risk of riskToleranceOptions" [value]="risk">{{ risk }}</option>
+                  </select>
+                  <label for="riskTolerance">Risk Tolerance</label>
+                </div>
+              </div>
+
+              <!-- Financial Objective -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select id="financialObjective" class="form-control" formControlName="financialObjective">
+                    <option *ngFor="let objective of financialObjectiveOptions" [value]="objective">{{ objective }}</option>
+                  </select>
+                  <label for="financialObjective">Financial Objective</label>
+                </div>
+              </div>
+
+              <!-- Investment Frequency -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select id="investmentFrequency" class="form-control" formControlName="investmentFrequency">
+                    <option *ngFor="let frequency of investmentFrequencyOptions" [value]="frequency">{{ frequency }}</option>
+                  </select>
+                  <label for="investmentFrequency">Investment Frequency</label>
+                </div>
+              </div>
+
+              <!-- Preferred Sector -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select id="preferredSector" class="form-control" formControlName="preferredSector">
+                    <option *ngFor="let sector of preferredSectorOptions" [value]="sector">{{ sector }}</option>
+                  </select>
+                  <label for="preferredSector">Preferred Sector</label>
+                </div>
+              </div>
+
+              <!-- Investment History -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select id="investmentHistory" class="form-control" formControlName="investmentHistory" multiple>
+                    <option *ngFor="let history of investmentHistoryOptions" [value]="history">{{ history }}</option>
+                  </select>
+                  <label for="investmentHistory">Investment History</label>
+                </div>
+              </div>
+
+              <!-- Preferred Domains -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select id="preferredDomains" class="form-control" formControlName="preferredDomains" multiple>
+                    <option *ngFor="let domain of preferredDomainsOptions" [value]="domain">{{ domain }}</option>
+                  </select>
+                  <label for="preferredDomains">Preferred Domains</label>
+                </div>
+              </div>
+
+              <!-- Income -->
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="number" id="income" class="form-control" placeholder="Enter Income" formControlName="income" />
+                  <label for="income">Income</label>
+                </div>
+              </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 w-100" [disabled]="userProfileForm.invalid">Submit</button>
+          </form>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

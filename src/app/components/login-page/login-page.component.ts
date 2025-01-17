@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component,OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from '../../services/auth.service';
@@ -13,26 +13,23 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [RouterModule, CommonModule, ReactiveFormsModule, ThreeParticulesComponent],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.css'
+  styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent {
-
-  loginForm!: FormGroup; // FormGroup pour le formulaire de connexion
-  isLoading: boolean = false; // Indicateur de chargement
-  errorMessage: string = ''; // Message d'erreur en cas d'éche
+export class LoginPageComponent implements OnInit, AfterViewInit {
+  loginForm!: FormGroup;
+  isLoading: boolean = false;
+  errorMessage: string = '';
 
   constructor(
     private titleService: Title,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router) {
-    // Définir le titre ici
+    private router: Router
+  ) {
     this.titleService.setTitle('IB - Login Page');
   }
 
-
   ngOnInit(): void {
-    // Initialisation du formulaire avec les champs nécessaires
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -41,7 +38,7 @@ export class LoginPageComponent {
 
   onSubmit(): void {
     if (this.loginForm.invalid) {
-      // Show an alert for incomplete form
+
       Swal.fire({
         icon: 'warning',
         title: 'Incomplete Form',
@@ -49,20 +46,19 @@ export class LoginPageComponent {
         confirmButtonColor: '#007bff',
         background: '#f8f9fa',
       });
-      return; // Prevent further execution
+      return;
     }
-  
-    // Form is valid, proceed with login
+
     this.isLoading = true;
-    this.errorMessage = ''; // Reset any previous error messages
-  
-    const credentials = this.loginForm.value; // Get form values
-  
-    this.authService.login(credentials).subscribe(
-      (response) => {
+    this.errorMessage = '';
+
+    const credentials = this.loginForm.value;
+
+    this.authService.login(credentials).subscribe({
+      next: (response) => {
         this.isLoading = false;
-  
-        // Success alert
+        // Save session data
+        localStorage.setItem('userId', JSON.stringify(response));
         Swal.fire({
           icon: 'success',
           title: 'Login Successful',
@@ -70,14 +66,11 @@ export class LoginPageComponent {
           confirmButtonColor: '#28a745',
           background: '#f8f9fa',
         }).then(() => {
-          // Redirect after success
-          this.router.navigate(['/user-dashboard']);
+          this.router.navigate(['/User-Profile']);
         });
       },
-      (error) => {
+      error: (error) => {
         this.isLoading = false;
-  
-        // Handle general login errorsdfg
         Swal.fire({
           icon: 'error',
           title: 'Login Failed',
@@ -87,12 +80,11 @@ export class LoginPageComponent {
           confirmButtonColor: '#dc3545',
           background: '#f8f9fa',
         });
-  
         console.error('Login error:', error);
       }
-    );
+    });
   }
-  
+
 
 
 
