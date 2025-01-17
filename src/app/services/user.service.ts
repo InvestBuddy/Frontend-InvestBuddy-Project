@@ -29,7 +29,7 @@ export interface UserResponse {
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/api/v1/users'; // Base API URL for UserService
+  private apiUrl = 'http://user-service:8080/api/v1/users'; // Base API URL for UserService
 
   constructor(private http: HttpClient) {}
 
