@@ -14,11 +14,23 @@ pipeline {
                           userRemoteConfigs: [[url: 'https://github.com/InvestBuddy/Frontend.git', credentialsId: 'git']]])
             }
         }
+      
+        stage('Install Dependencies') {
+            steps {
+                bat 'npm install' // Install all project dependencies
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                bat 'npm test -- --code-coverage' // Generate test coverage report
+            }
+        }
+
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQubeServer') {
-                   bat 'npm install'
-                   bat " npm sonar"
+                    bat 'npm run sonar'
                 }
             }
         }
@@ -40,14 +52,14 @@ pipeline {
             }
         }
 
-       // stage('Deploy Frontend Stack') {
-        //   steps {
-        //         withKubeConfig([credentialsId: 'kubectl']) {
-        //           bat """
-        //                kubectl apply -f frontend.yml
-        //             """
-        //         }
-        //     }
-        // }
+       stage('Deploy Frontend Stack') {
+          steps {
+                withKubeConfig([credentialsId: 'kubectl']) {
+                  bat """
+                       kubectl apply -f frontend.yml
+                    """
+                }
+            }
+        }
     }
 }
