@@ -28,7 +28,7 @@ export interface PredictionResponse {
   providedIn: 'root',
 })
 export class PredictionService {
-  private gatewayUrl = 'http://localhost:8080/api/v1/prediction/predict';
+  private gatewayUrl = 'http://prediction-service:8080/api/v1/prediction/predict';
 
   constructor(private http: HttpClient, private userService: UserService) {}
 
