@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { KycTriggerPageComponent } from './kyc-trigger-page.component';
+import { KycVerificationComponent } from './kyc-verification.component';
 
-describe('KycTriggerPageComponent', () => {
-  let component: KycTriggerPageComponent;
-  let fixture: ComponentFixture<KycTriggerPageComponent>;
+describe('KycVerificationComponent', () => {
+  let component: KycVerificationComponent;
+  let fixture: ComponentFixture<KycVerificationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [KycTriggerPageComponent]
+      imports: [KycVerificationComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(KycTriggerPageComponent);
+    fixture = TestBed.createComponent(KycVerificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

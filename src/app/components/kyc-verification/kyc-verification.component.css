@@ -1,0 +1,87 @@
+/* General container styling */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background: #f9f9f9;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  text-align: center;
+}
+
+/* Title styling */
+h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Paragraph styling */
+p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Loading spinner styles */
+.container .loading h1 {
+  color: #007bff;
+  animation: pulse 1.5s infinite;
+}
+
+/* Button styling */
+.btn {
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 25px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Primary button */
+.btn-primary {
+  background: #007bff;
+  color: #fff;
+  border: none;
+}
+.btn-primary:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Danger button */
+.btn-danger {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+}
+.btn-danger:hover {
+  background: #b02a37;
+  transform: scale(1.05);
+}
+
+/* Rounded pill button */
+.rounded-pill {
+  border-radius: 50px;
+}
+
+/* Shadow effect */
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation for loading text */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}

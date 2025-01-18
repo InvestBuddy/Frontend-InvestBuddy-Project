@@ -1,42 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Import nécessaire
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
+import { KycService } from 'src/app/services/kyc.service'; // Import your KYC service
+
 @Component({
   selector: 'app-verification-success',
   templateUrl: './verification-success.component.html',
-  imports: [CommonModule, RouterModule], // Ajoute CommonModule ici
   styleUrls: ['./verification-success.component.css']
 })
 export class VerificationSuccessComponent implements OnInit {
   userId: string | null = null;
   token: string | null = null;
-  isLoading: boolean = true; // Pour afficher un état de chargement pendant le traitement
-  isVerified: boolean = false; // Pour vérifier si la vérification est réussie
+  isLoading: boolean = true;
+  isVerified: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private kycService: KycService // Inject the KYC service
+  ) {}
 
   ngOnInit(): void {
-    // Récupérer les paramètres depuis l'URL
+    // Retrieve parameters from the URL
     this.userId = this.route.snapshot.queryParamMap.get('userId');
     this.token = this.route.snapshot.queryParamMap.get('token');
 
     if (this.userId && this.token) {
       console.log(`Verifying userId: ${this.userId}, token: ${this.token}`);
-      this.isVerified = true; // Simule la réussite de la vérification
+      this.isVerified = true;
+      this.fetchKycUrl(); // Fetch the KYC link immediately
     } else {
       console.error('Verification failed: Missing parameters.');
       this.isVerified = false;
     }
+  }
 
-    // Simule un délai de traitement (exemple)
-    setTimeout(() => {
-      this.isLoading = false;
-      if (!this.isVerified) {
-        alert('Verification failed. Please try again or contact support.');
-        this.router.navigate(['/login']); // Redirige vers la page de connexion en cas d'échec
-      }
-    }, 2000); // Simule un délai de 2 secondes
+  /**
+   * Fetches the KYC URL from the backend and redirects the user to it.
+   */
+  private fetchKycUrl(): void {
+    if (this.userId) {
+      this.kycService.getKycUrl(this.userId).subscribe({
+        next: (url: string) => {
+          console.log('KYC URL:', url);
+          // Automatically redirect to the KYC link
+          window.location.href = url;
+          this.isLoading = false;
+        },
+        error: (err: any) => {
+          console.error('Error fetching KYC URL:', err);
+          this.redirectToLoginWithError();
+        }
+      });
+    }
+  }
+
+  /**
+   * Redirects the user to the login page if fetching KYC URL fails.
+   */
+  private redirectToLoginWithError(): void {
+    this.isLoading = false;
+    alert('Failed to fetch KYC link. Please contact support.');
+    this.router.navigate(['/login']);
   }
 }

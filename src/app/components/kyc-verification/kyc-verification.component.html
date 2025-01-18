@@ -1,0 +1,20 @@
+<div class="container text-center mt-5">
+  <div *ngIf="isLoading">
+    <h1>🔄 Loading KYC Verification...</h1>
+    <p>Please wait while we fetch your KYC verification link.</p>
+  </div>
+
+  <div *ngIf="!isLoading && kycUrl">
+    <h1>🔍 Complete Your KYC Verification</h1>
+    <p>Click the button below to start your KYC verification process.</p>
+    <a [href]="kycUrl" target="_blank" class="btn btn-primary btn-lg rounded-pill mt-4 shadow">
+      Start KYC Verification
+    </a>
+  </div>
+
+  <div *ngIf="!isLoading && !kycUrl">
+    <h1>❌ Unable to Fetch KYC Link</h1>
+    <p>Please contact support for assistance.</p>
+    <a routerLink="/login" class="btn btn-danger btn-lg rounded-pill mt-4 shadow">Go to Login</a>
+  </div>
+</div>
