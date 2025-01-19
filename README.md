@@ -27,6 +27,29 @@ InvestBuddy bridges the gap between modern financial needs and robust technology
 - **Frontend**: Angular for an intuitive and responsive user interface.
 - **Messaging**: Kafka ensures asynchronous, reliable inter-service communication.
 
+## 🖼️ Screenshots
+### 🏠 Home Page
+![image](https://github.com/user-attachments/assets/b20afe23-cb55-4b97-9f1b-cdb91d955d41)
+
+### 🔑 Login Page
+![image](https://github.com/user-attachments/assets/6f2bbafb-b979-4bfe-8538-a1373aae20a6)
+
+### 📝 Registration Page
+![image](https://github.com/user-attachments/assets/9c34c0e5-78e6-4495-9ce0-a0b4e3699f6c)
+
+### 🏠 User Dashboard
+![image](https://github.com/user-attachments/assets/a8517ad3-1b50-42c0-99ad-66e99742a247)
+
+### 🕵️ KYC Status Pages
+
+
+### 📧 Email Verification Notification
+![image](https://github.com/user-attachments/assets/95b143a3-c97c-44d8-90a2-9c165e6a6052)
+
+### 📊 Prediction Dashboard
+![image](https://github.com/user-attachments/assets/04ba742f-fe1e-476e-a2ce-bb279d28f41d)
+
+---
 ### 🎯 Project Objectives
 1. Deliver scalable financial transaction and account management services.
 2. 📈 Utilize predictive analytics for market trends and credit risk evaluations.
@@ -103,29 +126,6 @@ src/app
 
 
 
-## 🖼️ Screenshots
-### 🏠 Home Page
-![image](https://github.com/user-attachments/assets/b20afe23-cb55-4b97-9f1b-cdb91d955d41)
-
-### 🔑 Login Page
-![image](https://github.com/user-attachments/assets/6f2bbafb-b979-4bfe-8538-a1373aae20a6)
-
-### 📝 Registration Page
-![image](https://github.com/user-attachments/assets/9c34c0e5-78e6-4495-9ce0-a0b4e3699f6c)
-
-### 🏠 User Dashboard
-![image](https://github.com/user-attachments/assets/a8517ad3-1b50-42c0-99ad-66e99742a247)
-
-### 🕵️ KYC Status Pages
-
-
-### 📧 Email Verification Notification
-![image](https://github.com/user-attachments/assets/95b143a3-c97c-44d8-90a2-9c165e6a6052)
-
-### 📊 Prediction Dashboard
-![image](https://github.com/user-attachments/assets/04ba742f-fe1e-476e-a2ce-bb279d28f41d)
-
----
 
 ## 🛠️ Installation and Setup
 
