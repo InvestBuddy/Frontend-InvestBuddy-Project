@@ -30,7 +30,6 @@
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.7",
     "owl.carousel": "^2.3.4",
-    "particles.js": "^2.0.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.15.10",
     "three": "^0.172.0",
