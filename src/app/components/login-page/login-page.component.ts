@@ -59,11 +59,25 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
       next: (response) => {
         this.isLoading = false;
 
-        // Save session data
-        const userId = response.userId; // Assume the response contains userId
-        localStorage.setItem('userId', JSON.stringify(response));
+        // Extract userId and token from the response
+        const userId = response; // Since your `login` method only returns the UUID.
+        const authToken = response.token || null;
 
-        // Fetch the KYC status for the logged-in user
+        if (!userId) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Login Error',
+            text: 'Failed to retrieve userId from login response.',
+            confirmButtonColor: '#dc3545',
+            background: '#f8f9fa',
+          });
+          return;
+        }
+
+        // Save session data to localStorage
+        this.authService.saveSession(userId, authToken);
+
+        // Fetch KYC status using the userId
         this.kycService.getKycStatus(userId).subscribe({
           next: (kycStatus) => {
             if (kycStatus === 'APPROVED') {
@@ -94,7 +108,9 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
               });
             }
           },
-          error: (kycError) => {
+          error: (error) => {
+            this.isLoading = false;
+            console.error('KYC Status error:', error);
             Swal.fire({
               icon: 'error',
               title: 'KYC Status Error',
@@ -102,7 +118,6 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
               confirmButtonColor: '#dc3545',
               background: '#f8f9fa',
             });
-            console.error('KYC Status error:', kycError);
           },
         });
       },

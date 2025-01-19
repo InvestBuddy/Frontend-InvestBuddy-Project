@@ -48,12 +48,6 @@ canvas {
   height: 400px; /* Increased height for better readability */
 }
 
-/* Ensure equal widths for charts */
-.card-body canvas {
-  width: 100% !important; /* Ensure charts fill the container width */
-}
-
-
 
 
 
@@ -537,3 +531,152 @@ canvas {
   transform: translateY(-2px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
+
+/* Card Container */
+.card {
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Titles */
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Card Text */
+.card-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Icons */
+.card-body i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.card-body{
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.card-body1{
+  padding-bottom: 220px;
+}
+
+
+.card:hover i {
+  transform: scale(1.2);
+}
+
+/* Colors */
+.text-primary {
+  color: #007bff !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-info {
+  color: #17a2b8 !important;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card-body h3 {
+    font-size: 1.2rem;
+  }
+  .card-body h5 {
+    font-size: 1rem;
+  }
+  .card-body i {
+    font-size: 2.5rem;
+  }
+}
+
+/* Enhanced Charts Section */
+.chart-card {
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  margin-bottom: 20px;
+}
+
+.chart-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific styling for the portfolio chart container */
+#portfolioChart {
+  min-height: 400px !important; /* Ensure minimum height for pie chart visibility */
+  width: 100% !important;
+  display: block !important;
+  aspect-ratio: 1 / 1; /* Force square aspect ratio for pie chart */
+}
+
+/* Styling for the performance trends chart */
+#performanceTrendsChart {
+  min-height: 300px !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.chart-container {
+
+  position: relative;
+  padding: 20px;
+  margin: auto;
+  height: auto !important;
+  width: 100%;
+  padding-bottom: 100px !important;
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #portfolioChart,
+  #performanceTrendsChart {
+    min-height: 350px !important;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* Animation for chart load */
+@keyframes chartFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chart-card {
+  animation: chartFadeIn 0.5s ease-out;
+}
+

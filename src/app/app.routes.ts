@@ -13,6 +13,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { KycGuard } from './guards/kyc.guard';
 import { KycPendingComponent } from './components/kyc-pending/kyc-pending.component';
 import { KycVerificationComponent } from './components/kyc-verification/kyc-verification.component';
+import { ProfilRegularUserComponent } from './components/profil-regular-user/profil-regular-user.component';
+import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -35,5 +37,6 @@ export const routes: Routes = [
   { path: 'success', component: VerificationSuccessComponent },
   { path: 'kyc-pending', component: KycPendingComponent },
   { path: 'kyc-verification', component: KycVerificationComponent },
-
+  {path: 'Profil-User',component: ProfilRegularUserComponent,canActivate: [KycGuard]},
+  {path: 'admin-dash',component: AdminDashComponent}
 ];
