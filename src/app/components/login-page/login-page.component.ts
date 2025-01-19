@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ThreeParticulesComponent } from "../shared/three-particles/three-particles.component";
 import Swal from 'sweetalert2';
+import { KycService } from 'src/app/services/kyc.service';
 
 @Component({
   selector: 'app-login-page',
@@ -24,7 +25,8 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
     private titleService: Title,
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private kycService: KycService
   ) {
     this.titleService.setTitle('IB - Login Page');
   }
@@ -38,7 +40,6 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
 
   onSubmit(): void {
     if (this.loginForm.invalid) {
-
       Swal.fire({
         icon: 'warning',
         title: 'Incomplete Form',
@@ -57,16 +58,52 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
     this.authService.login(credentials).subscribe({
       next: (response) => {
         this.isLoading = false;
+
         // Save session data
+        const userId = response.userId; // Assume the response contains userId
         localStorage.setItem('userId', JSON.stringify(response));
-        Swal.fire({
-          icon: 'success',
-          title: 'Login Successful',
-          text: 'Welcome back to InvestBuddy!',
-          confirmButtonColor: '#28a745',
-          background: '#f8f9fa',
-        }).then(() => {
-          this.router.navigate(['/User-Profile']);
+
+        // Fetch the KYC status for the logged-in user
+        this.kycService.getKycStatus(userId).subscribe({
+          next: (kycStatus) => {
+            if (kycStatus === 'APPROVED') {
+              Swal.fire({
+                icon: 'success',
+                title: 'Login Successful',
+                text: 'Welcome back to InvestBuddy!',
+                confirmButtonColor: '#28a745',
+                background: '#f8f9fa',
+              }).then(() => {
+                this.router.navigate(['/User-Profile']);
+              });
+            } else if (kycStatus === 'PENDING') {
+              Swal.fire({
+                icon: 'info',
+                title: 'KYC Verification Pending',
+                text: 'Your KYC verification is still in progress. Please check back later.',
+                confirmButtonColor: '#ffc107',
+                background: '#f8f9fa',
+              });
+            } else if (kycStatus === 'DECLINED') {
+              Swal.fire({
+                icon: 'error',
+                title: 'KYC Verification Failed',
+                text: 'Your KYC verification was declined. Please contact support for assistance.',
+                confirmButtonColor: '#dc3545',
+                background: '#f8f9fa',
+              });
+            }
+          },
+          error: (kycError) => {
+            Swal.fire({
+              icon: 'error',
+              title: 'KYC Status Error',
+              text: 'Failed to retrieve KYC status. Please try again later.',
+              confirmButtonColor: '#dc3545',
+              background: '#f8f9fa',
+            });
+            console.error('KYC Status error:', kycError);
+          },
         });
       },
       error: (error) => {
@@ -74,14 +111,15 @@ export class LoginPageComponent implements OnInit, AfterViewInit {
         Swal.fire({
           icon: 'error',
           title: 'Login Failed',
-          text: error?.status === 401
-            ? 'Invalid email or password. Please try again.'
-            : 'An unexpected error occurred. Please try again later.',
+          text:
+            error?.status === 401
+              ? 'Invalid email or password. Please try again.'
+              : 'An unexpected error occurred. Please try again later.',
           confirmButtonColor: '#dc3545',
           background: '#f8f9fa',
         });
         console.error('Login error:', error);
-      }
+      },
     });
   }
 

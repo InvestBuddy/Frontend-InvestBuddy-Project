@@ -14,14 +14,23 @@ export class KycService {
    * Fetch the KYC URL for the given userId.
    */
   getKycUrl(userId: string): Observable<string> {
-    // Use `responseType: 'text'` to handle plain text responses
+    // Ensure the response is treated as plain text
     return this.http.get(`${this.baseUrl}/${userId}/url`, { responseType: 'text' });
   }
 
   /**
    * Fetch the KYC status for the given userId.
    */
-  getKycStatus(userId: string): Observable<string> {
-    return this.http.get<string>(`${this.baseUrl}/${userId}/status`);
+  getKycStatus(userId: string): Observable<'APPROVED' | 'DECLINED' | 'PENDING'> {
+    // Expect the API to return a specific string enum
+    return this.http.get<'APPROVED' | 'DECLINED' | 'PENDING'>(`${this.baseUrl}/${userId}/status`);
+  }
+
+  /**
+   * Send a webhook payload to the backend for processing.
+   */
+  handleWebhook(payload: any): Observable<void> {
+    // POST the webhook payload to the designated endpoint
+    return this.http.post<void>(`${this.baseUrl}/webhook/decisions`, payload);
   }
 }
