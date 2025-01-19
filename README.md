@@ -47,7 +47,9 @@ InvestBuddy bridges the gap between modern financial needs and robust technology
 ![image](https://github.com/user-attachments/assets/95b143a3-c97c-44d8-90a2-9c165e6a6052)
 
 ### 📊 Prediction Dashboard
-![image](https://github.com/user-attachments/assets/04ba742f-fe1e-476e-a2ce-bb279d28f41d)
+![image](https://github.com/user-attachments/assets/c7ee1bdc-c812-43f1-babe-5cb6e98eb1e4)
+
+![image](https://github.com/user-attachments/assets/4ff806d2-0df4-4739-a621-54b8d5ee08bb)
 
 ---
 ### 🎯 Project Objectives
