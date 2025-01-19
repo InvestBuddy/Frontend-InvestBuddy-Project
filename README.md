@@ -41,6 +41,7 @@ InvestBuddy bridges the gap between modern financial needs and robust technology
 ![image](https://github.com/user-attachments/assets/a8517ad3-1b50-42c0-99ad-66e99742a247)
 
 ### 🕵️ KYC Status Pages
+![Uploading image.png…]()
 
 
 ### 📧 Email Verification Notification
