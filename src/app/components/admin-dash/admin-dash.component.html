@@ -1,0 +1,55 @@
+<div class="dashboard-container">
+  <h1 class="dashboard-title">Admin Dashboard</h1>
+
+  <!-- User Count -->
+  <div class="card total-users-card">
+    <h2>Total Users</h2>
+    <p class="total-users">{{ totalUsers }}</p>
+  </div>
+
+  <!-- Income Chart -->
+  <div class="chart-container">
+    <apx-chart
+      [series]="incomeChartOptions.series"
+      [chart]="incomeChartOptions.chart"
+      [xaxis]="incomeChartOptions.xaxis"
+      [dataLabels]="incomeChartOptions.dataLabels"
+      [title]="incomeChartOptions.title"
+      [theme]="incomeChartOptions.theme"
+    ></apx-chart>
+  </div>
+
+  <!-- Risk Tolerance Chart -->
+  <div class="chart-container">
+    <apx-chart
+      [series]="riskChartOptions.series"
+      [chart]="riskChartOptions.chart"
+      [labels]="riskChartOptions.labels"
+      [title]="riskChartOptions.title"
+      [theme]="riskChartOptions.theme"
+    ></apx-chart>
+  </div>
+
+  <!-- User Table -->
+  <div class="user-table">
+    <h2>User List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phoneNumber }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

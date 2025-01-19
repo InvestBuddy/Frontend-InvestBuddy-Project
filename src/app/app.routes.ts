@@ -6,11 +6,15 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { RegisterPageComponent } from './components/register-page/register-page.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 import { EmailVerifNotifComponent } from './components/email-verif-notif/email-verif-notif.component';
-import { KycTriggerPageComponent } from './components/kyc-trigger-page/kyc-trigger-page.component';
 import { EmailFailledComponent } from './components/email-failled/email-failled.component';
 import { VerificationSuccessComponent } from './components/verification-success/verification-success.component';
 import { VerifyEmailInstructionComponent } from './components/verify-email-instruction/verify-email-instruction.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { KycGuard } from './guards/kyc.guard';
+import { KycPendingComponent } from './components/kyc-pending/kyc-pending.component';
+import { KycVerificationComponent } from './components/kyc-verification/kyc-verification.component';
+import { ProfilRegularUserComponent } from './components/profil-regular-user/profil-regular-user.component';
+import { AdminDashComponent } from './components/admin-dash/admin-dash.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -22,13 +26,17 @@ export const routes: Routes = [
     ],
   },
 
-  { path: 'login',component: LoginPageComponent },
+  { path: 'login',component: LoginPageComponent // Protect login with KYC Guard
+  },
   { path: 'register',component: RegisterPageComponent },
-  { path: 'user-dashboard',component: UserDashboardComponent },
+  { path: 'user-dashboard',component: UserDashboardComponent, },
   { path: 'User-Profile',component: UserProfileComponent },
   { path: 'email-verif-notif',component: EmailVerifNotifComponent },
-  { path: 'kyc-trigger-page',component: KycTriggerPageComponent },
   { path: 'email-failled',component: EmailFailledComponent },
   { path: 'verify-email-instruction', component: VerifyEmailInstructionComponent },
   { path: 'success', component: VerificationSuccessComponent },
+  { path: 'kyc-pending', component: KycPendingComponent },
+  { path: 'kyc-verification', component: KycVerificationComponent },
+  {path: 'Profil-User',component: ProfilRegularUserComponent,canActivate: [KycGuard]},
+  {path: 'admin-dash',component: AdminDashComponent}
 ];

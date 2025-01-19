@@ -1,0 +1,64 @@
+.dashboard-container {
+  padding: 30px;
+  background-color: #f9f9f9;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dashboard-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4a90e2;
+}
+
+.card {
+  background: linear-gradient(145deg, #e0e0e0, #ffffff);
+  box-shadow: 3px 3px 6px #d4d4d4, -3px -3px 6px #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.total-users-card {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.total-users {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.chart-container {
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.user-table {
+  margin-top: 30px;
+}
+
+.user-table table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.user-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

@@ -3,6 +3,12 @@ import { Component, AfterViewInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
+import {  OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserProfileResponse, UserProfileService } from 'src/app/services/user-profile.service';
+import { UserService, UserResponse } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
+import { ParticulesDashComponent } from "../shared/particules-dash/particules-dash.component";
 
 // Import Chart.js
 import Chart from 'chart.js/auto';
@@ -11,16 +17,22 @@ import { PredictionService, PredictionResponse } from 'src/app/services/predicti
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, ParticulesDashComponent],
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements AfterViewInit {
   predictionResponse: PredictionResponse | null = null;
-
+  userProfile: UserProfileResponse | null = null; // User profile from UserProfileService
+  userDetails: UserResponse | null = null; // User details from UserService
+  loading: boolean = true; // Loading state
+  errorMessage: string | null = null; // Error message, if any
+  userId: string | null = null;
   constructor(
     private titleService: Title,
-    private predictionService: PredictionService
+    private predictionService: PredictionService,
+    private userProfileService: UserProfileService,
+    private userService: UserService
   ) {
     // Set the page title
     this.titleService.setTitle('User - Dashboard');
@@ -194,6 +206,52 @@ export class UserDashboardComponent implements AfterViewInit {
       });
     }
   }
+
+  ngOnInit(): void {
+    // Use nullish coalescing to handle undefined values
+    this.userId = localStorage.getItem('userId') ?? null;
+
+    if (this.userId) {
+      this.fetchUserData();
+    } else {
+      this.loading = false;
+      this.errorMessage = 'User ID not found. Please log in again.';
+    }
+  }
+
+
+/**
+   * Fetch user profile and user details.
+   */
+private fetchUserData(): void {
+  this.loading = true;
+
+  // Fetch the user profile
+  this.userProfileService.getUserProfile(this.userId!).subscribe({
+    next: (profile) => {
+      this.userProfile = profile;
+
+      // Fetch additional user details
+      this.userService.getUserById(this.userId!).subscribe({
+        next: (details) => {
+          this.userDetails = details;
+          this.loading = false;
+        },
+        error: (err) => {
+          this.loading = false;
+          this.errorMessage = 'Failed to fetch user details. Please try again later.';
+        },
+      });
+    },
+    error: (err) => {
+      this.loading = false;
+      this.errorMessage = 'Failed to fetch user profile. Please try again later.';
+    },
+  });
+}
+
+
+
 
   //------------ Mapping functions ---------------------
   private mapGender(gender: string): string {

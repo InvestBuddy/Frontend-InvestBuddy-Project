@@ -1,4 +1,4 @@
-<div class="container text-center mt-5 success-container">
+<!-- <div class="container text-center mt-5 success-container">
   <div *ngIf="isLoading" class="loading">
     <h1>🔄 Verifying Your Email...</h1>
     <p>Please wait while we confirm your email verification.</p>
@@ -14,5 +14,16 @@
     <h1 class="error-title">❌ Verification Failed</h1>
     <p class="error-message">We couldn't verify your email. Please try again or contact support.</p>
     <a routerLink="/login" class="btn btn-danger btn-lg rounded-pill mt-4 shadow">Go to Login</a>
+  </div>
+</div> -->
+<div class="container text-center mt-5">
+  <div *ngIf="isLoading">
+    <h1>🔄 Loading KYC Verification...</h1>
+    <p>Please wait while we fetch your KYC verification link.</p>
+  </div>
+  <div *ngIf="!isLoading && !isVerified">
+    <h1>❌ Verification Failed</h1>
+    <p>Please contact support for assistance.</p>
+    <a routerLink="/login" class="btn btn-danger">Go to Login</a>
   </div>
 </div>

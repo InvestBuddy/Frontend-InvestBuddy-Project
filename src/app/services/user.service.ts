@@ -14,6 +14,7 @@ export interface UserRequest {
 }
 
 export interface UserResponse {
+riskTolerance: any;
   id: string;
   firstName: string;
   lastName: string;

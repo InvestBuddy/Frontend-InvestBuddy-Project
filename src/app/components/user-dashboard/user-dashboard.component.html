@@ -18,8 +18,8 @@
       </div>
       <!-- <div class="d-none d-lg-flex align-items-center"> -->
         <!-- Register Button -->
-        <a href="/User-Profile" class="btn btn-primary btn-sm rounded-pill mx-2 d-flex align-items-center">
-          <i class="fas fa-user-circle me-2"></i> Your Profile
+        <a href="/Profil-User" class="btn btn-primary btn-sm rounded-pill mx-2 d-flex align-items-center">
+          <i class="fas fa-user-circle me-2"></i> Go to your Profil
         </a>
         <a href="/" (click)="onLogout()" class="btn btn-outline-primary btn-sm rounded-pill mx-2 d-flex align-items-center">
                   <i class="fas fa-sign-in-alt me-2"></i> Logout
@@ -97,74 +97,84 @@
 
   <div class="main-content py-5 bg-light">
     <!-- Header Section -->
-    <div class="container mb-5 text-center">
-      <h1 class="text-primary display-4">Welcome, User!</h1>
+    <div *ngIf="!loading && userProfile && userDetails" class="container mb-5 text-center">
+      <h1 class="text-primary display-4">Welcome, {{ userDetails.firstName }} {{ userDetails.lastName }} !</h1>
       <p class="text-muted">Track your portfolio performance and explore insights tailored for you.</p>
     </div>
 
-    <!-- Dashboard Summary Section -->
-    <div class="container mb-5">
-      <div class="row g-4 text-center">
-        <div class="col-md-3 col-sm-6">
-          <div class="card text-center shadow-sm border-0 bg-white p-4">
-            <div class="card-body">
-              <i class="fas fa-wallet fa-3x text-primary mb-3"></i>
-              <h5 class="card-title">Portfolio Balance</h5>
-              <h3 class="card-text text-primary">$10,230</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card text-center shadow-sm border-0 bg-white p-4">
-            <div class="card-body">
-              <i class="fas fa-coins fa-3x text-success mb-3"></i>
-              <h5 class="card-title">Monthly Contributions</h5>
-              <h3 class="card-text text-success">$500</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card text-center shadow-sm border-0 bg-white p-4">
-            <div class="card-body">
-              <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
-              <h5 class="card-title">Performance</h5>
-              <h3 class="card-text text-info">+15%</h3>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="card text-center shadow-sm border-0 bg-white p-4">
-            <div class="card-body">
-              <i class="fas fa-briefcase fa-3x text-warning mb-3"></i>
-              <h5 class="card-title">Investments</h5>
-              <h3 class="card-text text-warning">12</h3>
-            </div>
-          </div>
+<!-- Dashboard Summary Section -->
+<div *ngIf="!loading && userProfile && userDetails" class="container mb-5">
+  <div class="row g-4 text-center">
+    <!-- Risk Tolerance -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center shadow-sm border-0 bg-white p-4">
+        <div class="card-body">
+          <i class="fas fa-balance-scale fa-3x text-primary mb-3"></i>
+          <h5 class="card-title">Risk Tolerance</h5>
+          <h3 class="card-text text-primary">{{ userProfile.riskTolerance }}</h3>
         </div>
       </div>
     </div>
+    <!-- Investment Frequency -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center shadow-sm border-0 bg-white p-4">
+        <div class="card-body">
+          <i class="fas fa-calendar-alt fa-3x text-success mb-3"></i>
+          <h5 class="card-title">Investment Frequency</h5>
+          <h3 class="card-text text-success">{{ userProfile.investmentFrequency }}</h3>
+        </div>
+      </div>
+    </div>
+    <!-- Age -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center shadow-sm border-0 bg-white p-4">
+        <div class="card-body">
+          <i class="fas fa-user-clock fa-3x text-info mb-3"></i>
+          <h5 class="card-title">Age</h5>
+          <h3 class="card-text text-info">Age {{ userProfile.age }}</h3>
+        </div>
+      </div>
+    </div>
+    <!-- Preferred Sector -->
+    <div class="col-md-3 col-sm-6">
+      <div class="card text-center shadow-sm border-0 bg-white p-4">
+        <div class="card-body">
+          <i class="fas fa-building fa-3x text-warning mb-3"></i>
+          <h5 class="card-title">Preferred Sector</h5>
+          <h3 class="card-text text-warning">{{ userProfile.preferredSector }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Charts Section -->
-    <div class="container mb-5">
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="card shadow-sm border-0 bg-white p-4">
-            <div class="card-body">
-              <h5 class="card-title text-center">Portfolio Allocation</h5>
-              <canvas id="portfolioChart"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card shadow-sm border-0 bg-white p-4">
-            <div class="card-body">
-              <h5 class="card-title text-center">Performance Trends</h5>
-              <canvas id="performanceTrendsChart"></canvas>
-            </div>
+   <!-- Charts Section -->
+<div class="container mb-6">
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card shadow-lg border-0 bg-white p-4 chart-card">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-4">Portfolio Allocation</h5>
+          <div class="chart-container">
+            <canvas id="portfolioChart"></canvas>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-lg-6">
+      <div class="card shadow-lg border-0 bg-white p-4 chart-card">
+        <div class="card-body1">
+          <h5 class="card-title text-center mb-4">Performance Trends</h5>
+          <div class="chart-container">
+            <canvas id="performanceTrendsChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     <!-- Investment Suggestions Section -->
     <div class="container mb-5">

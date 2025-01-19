@@ -1,0 +1,38 @@
+body {
+  background-color: #f7f9fc;
+  font-family: 'Arial', sans-serif;
+}
+
+.card {
+  border-radius: 20px;
+  border: none;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.display-4 {
+  font-weight: 700;
+  color: #ff8800;
+}
+
+.lead {
+  font-size: 1.25rem;
+  line-height: 1.8;
+}s
+
+button.btn {
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.text-muted {
+  font-size: 0.9rem;
+}
