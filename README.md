@@ -16,7 +16,7 @@ InvestBuddy bridges the gap between modern financial needs and robust technology
 ### 🔄 Project Workflow
 ![image](https://github.com/user-attachments/assets/477cf7f6-121b-47f7-b4b0-ae7b312d54f3)
 
-> This diagram illustrates interactions between microservices, the frontend, backend, and AWS infrastructure. It showcases the data flow and modularity of the system.
+> This diagram illustrates interactions between microservices, the frontend, backend. It showcases the data flow and modularity of the system.
 
 ---
 
