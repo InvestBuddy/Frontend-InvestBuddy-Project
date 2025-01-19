@@ -14,7 +14,7 @@ InvestBuddy bridges the gap between modern financial needs and robust technology
 ## 🕹️ Workflow Diagram
 
 ### 🔄 Project Workflow
-![image](https://github.com/user-attachments/assets/477cf7f6-121b-47f7-b4b0-ae7b312d54f3)
+![image](https://github.com/user-attachments/assets/8b2fe604-7d63-479b-86fd-47a2dfe5c5a9)
 
 > This diagram illustrates interactions between microservices, the frontend, backend. It showcases the data flow and modularity of the system.
 
