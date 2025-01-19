@@ -192,4 +192,4 @@ We welcome contributions! Please follow these steps:
 ### 📢 Contact
 For any questions, please reach out to the project maintainer:
 - **Email**: mohamed.barbych@etu.uae.ac.ma
-- **LinkedIn**: [Your Name]([www.linkedin.com/in/mohamed-barbych-42217b276](https://www.linkedin.com/in/mohamed-barbych-42217b276/))
+- **LinkedIn**: [Your Name](https://www.linkedin.com/in/mohamed-barbych-42217b276/)
