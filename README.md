@@ -46,9 +46,6 @@ InvestBuddy bridges the gap between modern financial needs and robust technology
 ### 📧 Email Verification Notification
 ![image](https://github.com/user-attachments/assets/95b143a3-c97c-44d8-90a2-9c165e6a6052)
 
-
-
-
 ### 📊 Prediction Dashboard
 ![image](https://github.com/user-attachments/assets/c7ee1bdc-c812-43f1-babe-5cb6e98eb1e4)
 
@@ -60,6 +57,7 @@ InvestBuddy bridges the gap between modern financial needs and robust technology
 2. 📈 Utilize predictive analytics for market trends and credit risk evaluations.
 3. 📊 Real-time dashboards to provide financial insights and system monitoring.
 4. ⚙️ Integrate a seamless CI/CD pipeline powered by cutting-edge DevOps practices.
+![image](https://github.com/user-attachments/assets/5110cc60-b529-4f08-bf91-448e8f70e08d)
 
 ---
 
