@@ -58,6 +58,7 @@ InvestBuddy bridges the gap between modern financial needs and robust technology
 3. 📊 Real-time dashboards to provide financial insights and system monitoring.
 4. ⚙️ Integrate a seamless CI/CD pipeline powered by cutting-edge DevOps practices.
 ![image](https://github.com/user-attachments/assets/5110cc60-b529-4f08-bf91-448e8f70e08d)
+![image](https://github.com/user-attachments/assets/319ff5f4-0cfc-461b-bbc3-53de7a09b5bf)
 
 ---
 
